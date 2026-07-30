@@ -1,85 +1,102 @@
 import React from 'react';
-import { Layout, Cpu, Figma, Compass, ArrowRight } from 'lucide-react';
+import { Laptop, LayoutGrid, Paintbrush, Smartphone, Award, BookOpen } from 'lucide-react';
 
 const Services = ({ setActiveSection }) => {
   const serviceList = [
     {
-      icon: <Layout size={32} />,
-      title: 'FRONTEND DEVELOPMENT',
-      number: '01',
-      desc: 'Coding pixel-perfect, highly responsive, and high-performance user interfaces. Specialized in React, Next.js, and custom motion design animations.',
-      details: ['React & Custom Hooks', 'Next.js Server Actions', 'Tailwind & CSS Architecture', 'Framer Motion Integration'],
+      icon: <Laptop size={32} className="stroke-1" />,
+      title: <>WEB <span className="font-extrabold text-white">DESIGN</span> & UI</>,
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
     },
     {
-      icon: <Cpu size={32} />,
-      title: 'BACKEND SYSTEMS',
-      number: '02',
-      desc: 'Building reliable databases, secure authentication mechanisms, and performant REST/GraphQL endpoints using Node.js, Express, and PostgreSQL.',
-      details: ['Node.js APIs', 'Database Optimization', 'JWT & OAuth Auth Systems', 'Cloud Deployment & CI/CD'],
+      icon: <LayoutGrid size={32} className="stroke-1" />,
+      title: <>USER <span className="font-extrabold text-white">FLOW</span> & <span className="font-extrabold text-white">WIREFRAMES</span></>,
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
     },
     {
-      icon: <Figma size={32} />,
-      title: 'UI/UX DESIGN',
-      number: '03',
-      desc: 'Creating modern, minimalistic interface mockups and clean design flows. Focused on high usability, accessibility, and interactive web standards.',
-      details: ['Interactive Prototyping', 'Component Library Design', 'Wireframing & Workflows', 'Design-to-Code Delivery'],
+      icon: <Paintbrush size={32} className="stroke-1" />,
+      title: <>VISUAL <span className="font-extrabold text-white">DESIGN</span></>,
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
     },
     {
-      icon: <Compass size={32} />,
-      title: 'CREATIVE WORKSHOPS',
-      number: '04',
-      desc: 'Partnering with startups to conceptualize product strategy, optimize SEO structures, map layout architectures, and construct unique brand stories.',
-      details: ['SEO & Core Web Vitals', 'Brand Visual Systems', 'Layout Architecture Spec', 'Responsive Usability Audits'],
+      icon: <Smartphone size={32} className="stroke-1" />,
+      title: <>MOBILE <span className="font-extrabold text-white">APP</span> DESIGN</>,
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
+    },
+    {
+      icon: <Award size={32} className="stroke-1" />,
+      title: <>LOGO <span className="font-extrabold text-white">DESIGN</span></>,
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
+    },
+    {
+      icon: <BookOpen size={32} className="stroke-1" />,
+      title: <>PRINT <span className="font-extrabold text-white">DESIGN</span></>,
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
     },
   ];
 
+  const handleLetTalk = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <section id="services" className="w-full max-w-[1200px] mx-auto px-8 py-24 text-left">
-      {/* Header */}
-      <div className="mb-16">
-        <span className="font-mono text-xs uppercase tracking-widest text-text-muted">// WHAT I OFFER</span>
-        <h2 className="font-display font-extrabold text-4xl md:text-5xl mt-2">SERVICES</h2>
-      </div>
-
-      {/* Services Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {serviceList.map((service, index) => (
-          <div key={index} className="bg-bg-secondary border border-border-color p-10 rounded-sm flex flex-col justify-between min-h-[380px] hover:border-white hover:-translate-y-1 transition-all duration-300">
-            <div>
-              <div className="flex justify-between items-center mb-8">
-                <div className="text-white flex items-center justify-center w-12 h-12 bg-white/5 rounded-sm">
-                  {service.icon}
-                </div>
-                <span className="font-mono text-xl text-text-muted font-bold">{service.number}</span>
-              </div>
-              
-              <h3 className="font-display font-extrabold text-2xl mb-4 tracking-tight">{service.title}</h3>
-              <p className="text-base text-text-secondary mb-8 leading-relaxed">{service.desc}</p>
-            </div>
-            
-            <div className="border-t border-border-color pt-6">
-              <h4 className="text-[10px] font-sans tracking-widest text-text-muted mb-3">SPECIALTIES:</h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {service.details.map((detail, dIdx) => (
-                  <li key={dIdx} className="text-xs text-text-secondary relative pl-3 before:content-['•'] before:absolute before:left-0 before:text-text-muted">
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <section id="services" className="w-full bg-[#1b1b1b] py-24 text-left relative">
+      <div className="w-full max-w-[1200px] mx-auto px-8">
+        
+        {/* Section Heading with double underlines */}
+        <div className="text-center mb-20">
+          <h2 className="font-sans font-bold text-3xl tracking-widest text-white uppercase">WHAT I DO</h2>
+          <div className="w-24 h-[1px] bg-neutral-600 mx-auto mt-3 relative">
+            <div className="w-12 h-[1px] bg-white mx-auto mt-[3px]"></div>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Service CTA */}
-      <div className="mt-16 text-left">
-        <div className="bg-gradient-to-b from-bg-secondary to-transparent border border-border-color p-12 rounded-sm flex flex-col items-start gap-4">
-          <h3 className="font-display font-extrabold text-3xl md:text-4xl tracking-tight">HAVE A UNIQUE IDEA IN MIND?</h3>
-          <p className="text-base md:text-lg text-text-secondary max-w-[600px] mb-4">Let's coordinate to turn your custom vision into a beautiful, functional reality.</p>
-          <button className="btn-primary" onClick={() => setActiveSection('contact')}>
-            Start a Project <ArrowRight size={18} />
+        {/* Services Grid (6 Columns) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+          {serviceList.map((service, index) => (
+            <div key={index} className="flex gap-6 items-start">
+              {/* Icon Container with border and clean hover */}
+              <div className="text-neutral-400 p-2.5 bg-neutral-800/20 border border-neutral-800 flex items-center justify-center shrink-0">
+                {service.icon}
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="font-sans text-neutral-400 text-base font-medium tracking-wide uppercase">
+                  {service.title}
+                </h3>
+                <p className="text-neutral-400 text-xs leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Services Call to action */}
+        <div className="mt-20 pt-16 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-left">
+            <h4 className="font-sans font-bold text-xl text-white tracking-wide uppercase mb-1">WANT TO DISCUSS A NEW PROJECT?</h4>
+            <p className="text-neutral-400 text-sm">Let's collaborate together and build something truly creative.</p>
+          </div>
+          <button 
+            className="border border-white text-white bg-transparent py-3 px-10 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer shrink-0"
+            onClick={handleLetTalk}
+          >
+            GET IN TOUCH
           </button>
         </div>
+
       </div>
     </section>
   );

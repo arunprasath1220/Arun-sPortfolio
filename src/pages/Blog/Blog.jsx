@@ -115,136 +115,140 @@ Storybook acts as a single source of truth where developers and designers can in
   });
 
   return (
-    <section id="blog" className="w-full max-w-[1200px] mx-auto px-8 py-24 text-left">
-      {/* Header */}
-      <div className="mb-16">
-        <span className="font-mono text-xs uppercase tracking-widest text-text-muted">// WRITTEN THOUGHTS</span>
-        <h2 className="font-display font-extrabold text-4xl md:text-5xl mt-2">BLOG ARTICLES</h2>
-      </div>
-
-      {/* Search & Category Filter Toolbar */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 md:gap-8 mb-12 border-b border-border-color pb-6">
-        <div className="relative w-full md:w-80">
-          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
-          <input
-            type="text"
-            placeholder="Search articles..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-bg-secondary border border-border-color text-white py-3 pl-11 pr-4 rounded-sm text-sm focus:border-white transition-colors duration-200 outline-none"
-          />
+    <section id="blog" className="w-full bg-white py-24 text-left border-b border-neutral-200">
+      <div className="w-full max-w-[1200px] mx-auto px-8">
+        
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">HELPFUL WRITING</h2>
+          <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
+            <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+          </div>
         </div>
 
-        <div className="flex gap-2 flex-wrap">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              className={`text-[10px] font-semibold tracking-wider bg-transparent text-text-secondary border border-border-color py-2 px-4 rounded-sm cursor-pointer hover:text-white hover:border-white hover:bg-white/5 transition-all duration-200 ${
-                activeCategory === cat.id ? 'text-white border-white bg-white/5' : ''
-              }`}
-              onClick={() => setActiveCategory(cat.id)}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-      </div>
+        {/* Search & Category Filter Toolbar */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-neutral-100 pb-6">
+          <div className="relative w-full md:w-80">
+            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none" />
+            <input
+              type="text"
+              placeholder="Search articles..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full bg-neutral-50 border border-neutral-200 text-neutral-800 py-3 pl-11 pr-4 rounded-none text-xs font-semibold tracking-wider uppercase focus:border-neutral-900 outline-none"
+            />
+          </div>
 
-      {/* Blog Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-        {filteredPosts.length > 0 ? (
-          filteredPosts.map(post => (
-            <article
-              key={post.id}
-              className="bg-bg-secondary border border-border-color p-8 rounded-sm cursor-pointer flex flex-col justify-between min-h-[350px] hover:border-white hover:-translate-y-1 transition-all duration-300 group"
-              onClick={() => setSelectedPost(post)}
-            >
-              <div>
-                <div className="flex items-center gap-4 flex-wrap mb-6">
-                  <span className="font-mono text-[10px] font-bold text-white border border-border-color py-1 px-2.5 rounded-sm bg-white/5">{post.categoryLabel}</span>
-                  <span className="flex items-center gap-1.5 text-xs text-text-muted">
-                    <Calendar size={12} /> {post.date}
-                  </span>
-                  <span className="flex items-center gap-1.5 text-xs text-text-muted">
-                    <Clock size={12} /> {post.readTime}
+          <div className="flex gap-2 flex-wrap">
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                className={`text-[10px] font-bold tracking-widest uppercase bg-transparent text-neutral-500 border border-neutral-200 py-2 px-5 rounded-none cursor-pointer transition-colors duration-200 hover:text-neutral-900 hover:border-neutral-900 ${
+                  activeCategory === cat.id ? 'text-neutral-900 border-neutral-900 bg-neutral-50' : ''
+                }`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Blog Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+          {filteredPosts.length > 0 ? (
+            filteredPosts.map(post => (
+              <article
+                key={post.id}
+                className="bg-white border border-neutral-200 p-8 rounded-none cursor-pointer flex flex-col justify-between min-h-[350px] hover:border-neutral-900 transition-all duration-300 group"
+                onClick={() => setSelectedPost(post)}
+              >
+                <div>
+                  <div className="flex items-center gap-4 flex-wrap mb-6">
+                    <span className="font-mono text-[9px] font-bold text-neutral-800 border border-neutral-200 py-1 px-2 rounded-none bg-neutral-50">{post.categoryLabel}</span>
+                    <span className="flex items-center gap-1.5 text-xs text-neutral-400">
+                      <Calendar size={12} /> {post.date}
+                    </span>
+                    <span className="flex items-center gap-1.5 text-xs text-neutral-400">
+                      <Clock size={12} /> {post.readTime}
+                    </span>
+                  </div>
+
+                  <h3 className="font-sans font-bold text-lg leading-snug mb-4 text-neutral-900 group-hover:text-neutral-500 transition-colors duration-200">{post.title}</h3>
+                  <p className="text-xs text-neutral-500 leading-relaxed mb-8">{post.summary}</p>
+                </div>
+                
+                <div className="border-t border-neutral-100 pt-5">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase text-neutral-900">
+                    Read Article <ArrowRight size={14} />
                   </span>
                 </div>
-
-                <h3 className="font-display font-extrabold text-xl leading-tight mb-4 text-white group-hover:text-neutral-200 transition-colors duration-200">{post.title}</h3>
-                <p className="text-sm text-text-secondary leading-relaxed mb-8">{post.summary}</p>
-              </div>
-              
-              <div className="border-t border-border-color pt-5">
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white">
-                  Read Article <ArrowRight size={16} />
-                </span>
-              </div>
-            </article>
-          ))
-        ) : (
-          <div className="col-span-full text-center py-16 border border-dashed border-border-color text-text-secondary">
-            <p>No articles match your search or filter requirements.</p>
-          </div>
-        )}
+              </article>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-16 border border-dashed border-neutral-200 text-neutral-400">
+              <p>No articles match your search or filter requirements.</p>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Blog Article Reader Modal */}
       {selectedPost && (
-        <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-[2000] flex justify-center items-center p-4 md:p-8 animate-fade-in" onClick={() => setSelectedPost(null)}>
-          <div className="relative bg-bg-primary border border-border-color w-full max-w-[800px] max-h-[90vh] overflow-y-auto rounded-sm p-6 md:p-16 animate-scale-in text-left" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[2000] flex justify-center items-center p-4 md:p-8 animate-fade-in" onClick={() => setSelectedPost(null)}>
+          <div className="relative bg-white border border-neutral-300 w-full max-w-[800px] max-h-[90vh] overflow-y-auto rounded-none p-6 md:p-14 animate-scale-in text-left" onClick={(e) => e.stopPropagation()}>
             <button 
-              className="absolute top-4 right-4 md:top-6 md:right-6 bg-bg-secondary border border-border-color w-9 h-9 rounded-full flex items-center justify-center cursor-pointer text-white hover:border-white hover:rotate-90 transition-all duration-200 z-10" 
+              className="absolute top-4 right-4 md:top-6 md:right-6 bg-neutral-100 border border-neutral-200 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer text-neutral-800 hover:border-neutral-950 hover:rotate-90 transition-all duration-200 z-10" 
               onClick={() => setSelectedPost(null)}
             >
               <X size={20} />
             </button>
 
-            <header className="border-b border-border-color pb-8 mb-10">
-              <span className="font-mono text-xs font-bold tracking-wider text-text-muted">{selectedPost.categoryLabel}</span>
-              <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-2 mb-5 leading-tight">{selectedPost.title}</h2>
-              <div className="flex gap-6 text-sm text-text-muted">
+            <header className="border-b border-neutral-200 pb-6 mb-8">
+              <span className="font-mono text-xs font-bold tracking-wider text-neutral-400 uppercase">{selectedPost.categoryLabel}</span>
+              <h2 className="font-sans font-bold text-2xl md:text-3xl mt-2 mb-4 leading-tight text-neutral-950">{selectedPost.title}</h2>
+              <div className="flex gap-6 text-xs text-neutral-400 font-bold uppercase">
                 <span className="flex items-center gap-1.5"><Calendar size={14} /> {selectedPost.date}</span>
                 <span className="flex items-center gap-1.5"><Clock size={14} /> {selectedPost.readTime}</span>
               </div>
             </header>
 
-            <div className="text-base md:text-lg leading-relaxed text-text-secondary">
-              {/* Splitting mock markdown styled paragraphs */}
+            <div className="text-sm md:text-base leading-relaxed text-neutral-600">
               {selectedPost.content.split('\n\n').map((block, idx) => {
                 if (block.startsWith('### ')) {
-                  return <h3 key={idx} className="font-display font-extrabold text-2xl md:text-3xl text-white mt-10 mb-4">{block.replace('### ', '')}</h3>;
+                  return <h3 key={idx} className="font-sans font-bold text-xl md:text-2xl text-neutral-900 mt-8 mb-3 uppercase">{block.replace('### ', '')}</h3>;
                 }
                 if (block.startsWith('#### ')) {
-                  return <h4 key={idx} className="font-display font-bold text-lg md:text-xl text-white mt-8 mb-3">{block.replace('#### ', '')}</h4>;
+                  return <h4 key={idx} className="font-sans font-bold text-base md:text-lg text-neutral-900 mt-6 mb-2 uppercase">{block.replace('#### ', '')}</h4>;
                 }
                 if (block.startsWith('```')) {
                   const lines = block.split('\n');
                   const codeLines = lines.slice(1, -1).join('\n');
                   return (
-                    <pre key={idx} className="bg-bg-secondary border border-border-color p-6 rounded-sm font-mono text-sm text-white overflow-x-auto my-6">
+                    <pre key={idx} className="bg-neutral-50 border border-neutral-200 p-5 rounded-none font-mono text-xs text-neutral-800 overflow-x-auto my-5">
                       <code>{codeLines}</code>
                     </pre>
                   );
                 }
                 if (block.startsWith('- ')) {
                   return (
-                    <ul key={idx} className="mb-6 pl-6 list-disc">
+                    <ul key={idx} className="mb-5 pl-6 list-disc">
                       {block.split('\n').map((li, lIdx) => (
-                        <li key={lIdx} className="mb-2 text-text-secondary">{li.replace('- ', '')}</li>
+                        <li key={lIdx} className="mb-2 text-neutral-600">{li.replace('- ', '')}</li>
                       ))}
                     </ul>
                   );
                 }
-                return <p key={idx} className="mb-6">{block}</p>;
+                return <p key={idx} className="mb-5">{block}</p>;
               })}
             </div>
 
-            <footer className="border-t border-border-color pt-8 mt-12">
-              <div className="bg-bg-secondary border border-border-color p-6 rounded-sm flex items-center gap-6">
-                <BookOpen size={24} className="text-white" />
+            <footer className="border-t border-neutral-200 pt-6 mt-8">
+              <div className="bg-neutral-50 border border-neutral-200 p-5 rounded-none flex items-center gap-5">
+                <BookOpen size={24} className="text-neutral-800" />
                 <div>
-                  <h4 className="font-bold text-base mb-1 text-white">Finished reading?</h4>
-                  <p className="text-xs text-text-muted">Check out our other creative articles or get in touch for custom projects.</p>
+                  <h4 className="font-bold text-sm mb-1 text-neutral-900">Finished reading?</h4>
+                  <p className="text-xs text-neutral-400">Check out our other creative articles or get in touch for custom projects.</p>
                 </div>
               </div>
             </footer>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = ({ activeSection, setActiveSection }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,14 +32,23 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   };
 
   return (
-    <nav className="sticky top-0 w-full h-20 bg-bg-primary/70 backdrop-blur-md border-b border-border-color z-50 flex items-center transition-all duration-300">
+    <nav className="sticky top-0 w-full h-20 bg-white border-b border-neutral-200 shadow-sm z-50 flex items-center transition-all duration-300">
       <div className="flex items-center justify-between w-full max-w-[1200px] mx-auto px-8">
-        {/* Brand Logo */}
+        
+        {/* Brand Logo with Avatar (Matching John Doe image theme) */}
         <div 
-          className="font-display font-extrabold text-2xl tracking-tighter cursor-pointer select-none text-white" 
+          className="flex items-center gap-3 cursor-pointer select-none group" 
           onClick={() => handleNavClick('home')}
         >
-          ARUN<span className="text-text-muted">.</span>
+          <img 
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80" 
+            alt="Arun Avatar"
+            className="w-10 h-10 rounded-full border border-neutral-300 object-cover grayscale"
+          />
+          <div className="flex flex-col text-left">
+            <span className="font-sans font-bold text-sm tracking-widest text-black uppercase">ARUN</span>
+            <span className="font-sans text-[10px] font-semibold tracking-wider text-black/80 uppercase">CREATIVE DEVELOPER</span>
+          </div>
         </div>
 
         {/* Desktop Nav Items */}
@@ -47,9 +56,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           {navItems.map((item) => (
             <button
               key={item.id}
-              className={`text-xs font-semibold tracking-wider text-text-secondary cursor-pointer py-2 px-3 relative hover:text-white transition-colors duration-200 ${
+              className={`text-xs font-bold tracking-widest text-black cursor-pointer py-2 px-1 relative transition-colors duration-200 hover:text-black/60 ${
                 activeSection === item.id 
-                  ? 'text-white after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:bg-white after:rounded-full' 
+                  ? 'text-black border-b-2 border-black font-black' 
                   : ''
               }`}
               onClick={() => handleNavClick(item.id)}
@@ -59,16 +68,16 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           ))}
           
           <button 
-            className="flex items-center gap-1.5 text-xs font-semibold text-black bg-white py-2.5 px-5 rounded-full hover:bg-neutral-200 hover:-translate-y-[1px] transition-all duration-200 cursor-pointer" 
+            className="border border-black text-black bg-transparent py-2 px-6 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors duration-200 cursor-pointer" 
             onClick={() => handleNavClick('contact')}
           >
-            Hire Me <ArrowUpRight size={14} />
+            HIRE ME
           </button>
         </div>
 
         {/* Mobile Menu Icon */}
         <div 
-          className="block md:hidden cursor-pointer text-white active:scale-95 transition-transform duration-200" 
+          className="block md:hidden cursor-pointer text-black active:scale-95 transition-transform duration-200" 
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -76,15 +85,15 @@ const Navbar = ({ activeSection, setActiveSection }) => {
       </div>
 
       {/* Mobile Drawer */}
-      <div className={`fixed top-20 left-0 w-full h-[calc(100vh-80px)] bg-bg-primary border-t border-border-color transition-all duration-300 z-[999] flex justify-center items-center ${
+      <div className={`fixed top-20 left-0 w-full h-[calc(100vh-80px)] bg-white border-t border-neutral-200 transition-all duration-300 z-[999] flex justify-center items-center ${
         isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2.5'
       }`}>
-        <div className="flex flex-col items-center gap-8 p-8 h-[80%] justify-center">
+        <div className="flex flex-col items-center gap-6 p-8 h-[80%] justify-center">
           {navItems.map((item) => (
             <button
               key={item.id}
-              className={`text-2xl font-display font-bold tracking-wide text-text-secondary cursor-pointer hover:text-white transition-colors duration-200 ${
-                activeSection === item.id ? 'text-white' : ''
+              className={`text-xl font-sans font-bold tracking-widest text-black cursor-pointer hover:text-black/60 transition-colors duration-200 ${
+                activeSection === item.id ? 'text-black border-b-2 border-black font-extrabold' : ''
               }`}
               onClick={() => handleNavClick(item.id)}
             >
@@ -92,10 +101,10 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             </button>
           ))}
           <button 
-            className="flex items-center gap-2 text-lg font-semibold text-black bg-white py-3.5 px-8 rounded-full cursor-pointer mt-4" 
+            className="border border-black text-black bg-transparent py-3 px-8 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-200 cursor-pointer mt-4" 
             onClick={() => handleNavClick('contact')}
           >
-            Hire Me <ArrowUpRight size={18} />
+            HIRE ME
           </button>
         </div>
       </div>
