@@ -1,6 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Twitter, Globe } from 'lucide-react';
-import profileImg from '../../assets/profile_img.png';
+import profileImg from '../../assets/profile_img2.png';
 
 const Home = ({ setActiveSection }) => {
   const handleLetTalk = () => {
