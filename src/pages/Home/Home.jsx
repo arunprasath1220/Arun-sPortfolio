@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Twitter, Globe } from 'lucide-react';
+import profileImg from '../../assets/profile_img.png';
 
 const Home = ({ setActiveSection }) => {
   const handleLetTalk = () => {
@@ -49,7 +50,7 @@ const Home = ({ setActiveSection }) => {
         <div className="relative flex justify-center items-center h-full w-full">
           <div className="relative border border-neutral-200 p-3 bg-white shadow-md max-w-[420px] w-full">
             <img 
-              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&h=1000&q=80" 
+              src={profileImg} 
               alt="Arun Portrait"
               className="w-full h-auto grayscale object-cover"
             />

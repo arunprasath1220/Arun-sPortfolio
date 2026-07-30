@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import profileImg from '../../assets/profile_img.png';
 
 const Navbar = ({ activeSection, setActiveSection }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           onClick={() => handleNavClick('home')}
         >
           <img 
-            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80" 
+            src={profileImg} 
             alt="Arun Avatar"
             className="w-10 h-10 rounded-full border border-neutral-300 object-cover grayscale"
           />
