@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import profileImg from '../../assets/profile_img2.png';
 
 const Navbar = ({ activeSection, setActiveSection }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { label: 'HOME', id: 'home' },
@@ -33,7 +46,11 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   };
 
   return (
-    <nav className="sticky top-0 w-full h-20 bg-white border-b border-neutral-200 shadow-sm z-50 flex items-center transition-all duration-300">
+    <nav className={`sticky top-0 w-full h-20 transition-all duration-300 z-50 flex items-center ${
+      isScrolled 
+        ? 'bg-white/80 backdrop-blur-md border-b border-neutral-200/50 shadow-md' 
+        : 'bg-white border-b border-neutral-200'
+    }`}>
       <div className="flex items-center justify-between w-full max-w-[1200px] mx-auto px-8">
         
         {/* Brand Logo with Avatar (Matching John Doe image theme) */}
@@ -44,7 +61,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           <img 
             src={profileImg} 
             alt="Arun Avatar"
-            className="w-10 h-10 rounded-full border border-neutral-300 object-cover grayscale"
+            className="w-10 h-10 rounded-full border border-neutral-300 object-cover object-top grayscale"
           />
           <div className="flex flex-col text-left">
             <span className="font-sans font-bold text-sm tracking-widest text-black uppercase">ARUNPRASATH</span>
