@@ -47,7 +47,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             className="w-10 h-10 rounded-full border border-neutral-300 object-cover grayscale"
           />
           <div className="flex flex-col text-left">
-            <span className="font-sans font-bold text-sm tracking-widest text-black uppercase">ARUN</span>
+            <span className="font-sans font-bold text-sm tracking-widest text-black uppercase">ARUNPRASATH</span>
             <span className="font-sans text-[10px] font-semibold tracking-wider text-black/80 uppercase">CREATIVE DEVELOPER</span>
           </div>
         </div>

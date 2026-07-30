@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, Globe } from 'lucide-react';
+import { Github, Linkedin, Dribbble } from 'lucide-react';
 import profileImg from '../../assets/profile_img2.png';
 
 const Home = ({ setActiveSection }) => {
@@ -35,7 +35,7 @@ const Home = ({ setActiveSection }) => {
           </h1>
           
           <p className="text-neutral-500 text-lg leading-relaxed max-w-[500px] mb-10">
-            I'm the pixel crafter based in <span className="font-semibold text-neutral-950">#India</span>. I make the visual for web and mobile application to be more interactive.
+            I'm a Full Stack Developer based in <span className="font-semibold text-neutral-950">#India</span>, crafting scalable, high-performance web applications with clean architecture and exceptional user experiences.
           </p>
 
           <button 
@@ -58,20 +58,21 @@ const Home = ({ setActiveSection }) => {
         </div>
       </div>
 
-      {/* Social Links Bar floating elegantly at the bottom left */}
       <div className="w-full max-w-[1200px] mx-auto px-8 mt-12 flex justify-between items-center border-t border-neutral-100 pt-6">
-        <div className="flex gap-6">
-          <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub" className="text-neutral-400 hover:text-neutral-900 hover:-translate-y-0.5 transition-all duration-200">
+        <div className="flex gap-6 items-center">
+          <a href="https://github.com/arunprasath1220" target="_blank" rel="noreferrer" aria-label="GitHub" className="text-neutral-400 hover:text-neutral-900 hover:-translate-y-0.5 transition-all duration-200">
             <Github size={18} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-neutral-400 hover:text-neutral-900 hover:-translate-y-0.5 transition-all duration-200">
+          <a href="https://www.linkedin.com/in/arunprasath-p-0ab3aa352/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-neutral-400 hover:text-neutral-900 hover:-translate-y-0.5 transition-all duration-200">
             <Linkedin size={18} />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter" className="text-neutral-400 hover:text-neutral-900 hover:-translate-y-0.5 transition-all duration-200">
-            <Twitter size={18} />
+          <a href="https://x.com/arunprasatX" target="_blank" rel="noreferrer" aria-label="X" className="text-neutral-400 hover:text-neutral-900 hover:-translate-y-0.5 transition-all duration-200 flex items-center">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
           </a>
-          <a href="https://dribbble.com" target="_blank" rel="noreferrer" aria-label="Dribbble" className="text-neutral-400 hover:text-neutral-900 hover:-translate-y-0.5 transition-all duration-200">
-            <Globe size={18} />
+          <a href="https://dribbble.com/arunprasath1220" target="_blank" rel="noreferrer" aria-label="Dribbble" className="text-neutral-400 hover:text-neutral-900 hover:-translate-y-0.5 transition-all duration-200">
+            <Dribbble size={18} />
           </a>
         </div>
         <span className="font-mono text-[10px] text-neutral-400">// SCROLL DOWN TO EXPLORE</span>
