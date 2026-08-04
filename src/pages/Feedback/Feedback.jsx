@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
-import { Quote } from 'lucide-react';
+import { Quote, Rocket, Zap, Target } from 'lucide-react';
 
 const Feedback = () => {
-  // Testimonial list
+  // Testimonial list (Inspired by Great Minds)
   const feedbacks = [
     {
       id: 1,
-      name: 'James',
-      role: 'Web Developer',
-      text: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.",
-      imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80',
+      name: 'Albert Einstein',
+      role: 'Theoretical Physicist',
+      text: "Life is like riding a bicycle. To keep your balance, you must keep moving. Learn from yesterday, live for today, hope for tomorrow. The important thing is never to stop questioning.",
+      imageUrl: 'https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?auto=format&fit=crop&w=150&h=150&q=80',
     },
     {
       id: 2,
-      name: 'Sarah Connor',
-      role: 'Product Director',
-      text: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt.",
-      imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80',
+      name: 'Robert H. Schuller',
+      role: 'Author & Speaker',
+      text: "Tough times never last, but tough people do. Success is never ending, failure is never final. It is courage that counts.",
+      imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80',
     },
     {
       id: 3,
-      name: 'Bruce Wayne',
-      role: 'Chief Executive',
-      text: "Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Anim pariatur cliche reprehenderit, enim eiusmod.",
-      imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80',
+      name: 'U Thant',
+      role: 'Diplomat & UN Secretary-General',
+      text: "Peace can only last where human rights are respected, where the people are fed, and where individuals and nations are free. Lasting progress is built on understanding, compassion, and cooperation among all people.",
+      imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80',
     },
     {
       id: 4,
-      name: 'Elena Rostova',
-      role: 'Creative Lead',
-      text: "Food truck quinoa nesciunt laborum eiusmod. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.",
-      imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80',
+      name: 'Nelson Mandela',
+      role: 'Leader & Statesman',
+      text: "The greatest glory in living lies not in never falling, but in rising every time we fall. Courage is not the absence of fear, but the triumph over it. What matters is the willingness to keep moving forward despite every challenge.",
+      imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80',
     },
   ];
 
@@ -42,23 +42,36 @@ const Feedback = () => {
   const accordions = [
     {
       id: 0,
-      title: 'Collapsible Group Item #1',
-      desc: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod tempor sunt aliqua put.',
+      icon: <Rocket size={16} className="text-neutral-300 shrink-0" />,
+      title: 'PASSION FOR BUILDING',
+      desc: "I don't just write code—I build solutions. From AI-powered applications to full-stack web platforms, I enjoy turning ideas into products that solve real-world problems.",
     },
     {
       id: 1,
-      title: 'Collapsible Group Item #2',
-      desc: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod tempor sunt aliqua put.',
+      icon: <Zap size={16} className="text-neutral-300 shrink-0" />,
+      title: 'FAST LEARNER & PROBLEM SOLVER',
+      desc: "I quickly adapt to new technologies and love tackling challenging problems. Whether it's debugging, optimizing systems, or learning a new framework, I embrace every opportunity to grow.",
     },
     {
       id: 2,
-      title: 'Collapsible Group Item #3',
-      desc: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod tempor sunt aliqua put.',
+      icon: <Target size={16} className="text-neutral-300 shrink-0" />,
+      title: 'DRIVEN BY IMPACT',
+      desc: "I'm passionate about creating scalable, user-focused software. My goal is to contribute to meaningful products, continuously improve my skills, and deliver value through clean, efficient, and innovative solutions.",
     },
   ];
 
   const toggleAccordion = (id) => {
-    setOpenAccordion(openAccordion === id ? -1 : id);
+    if (openAccordion === id) {
+      setOpenAccordion(-1);
+    } else if (openAccordion !== -1) {
+      // Close open card first to avoid height overlap
+      setOpenAccordion(-1);
+      setTimeout(() => {
+        setOpenAccordion(id);
+      }, 300);
+    } else {
+      setOpenAccordion(id);
+    }
   };
 
   return (
@@ -76,51 +89,61 @@ const Feedback = () => {
             
             <div className="w-16 h-[1px] bg-neutral-700 mt-[-8px] mb-4"></div>
 
-            <div className="flex flex-col gap-4 w-full">
-              {accordions.map((acc) => (
-                <div key={acc.id} className="border border-neutral-700 bg-neutral-900/10">
-                  {/* Accordion Trigger Header */}
-                  <button
-                    className="w-full flex justify-between items-center p-4 text-xs font-bold uppercase tracking-widest text-neutral-300 hover:text-white transition-colors duration-200 outline-none"
-                    onClick={() => toggleAccordion(acc.id)}
-                  >
-                    <span>{acc.title}</span>
-                    <span className="text-sm font-semibold">{openAccordion === acc.id ? '−' : '+'}</span>
-                  </button>
-                  
-                  {/* Accordion Content pane */}
-                  <div 
-                    className={`transition-all duration-300 overflow-hidden ${
-                      openAccordion === acc.id ? 'max-h-40 border-t border-neutral-800 p-4 opacity-100' : 'max-h-0 opacity-0'
-                    }`}
-                  >
-                    <p className="text-neutral-400 text-xs leading-relaxed">
-                      {acc.desc}
-                    </p>
+            <div className="flex flex-col gap-4 w-full min-h-[290px]">
+              {accordions.map((acc) => {
+                const isOpen = openAccordion === acc.id;
+                return (
+                  <div key={acc.id} className={`border transition-colors duration-300 ${isOpen ? 'border-neutral-600 bg-neutral-900/40' : 'border-neutral-800 bg-neutral-900/10 hover:border-neutral-700'}`}>
+                    {/* Accordion Trigger Header */}
+                    <button
+                      className="w-full flex justify-between items-center p-4 text-xs font-bold uppercase tracking-widest text-neutral-300 hover:text-white transition-colors duration-200 outline-none cursor-pointer"
+                      onClick={() => toggleAccordion(acc.id)}
+                    >
+                      <div className="flex items-center gap-3">
+                        {acc.icon}
+                        <span>{acc.title}</span>
+                      </div>
+                      <span className={`text-base font-medium transition-transform duration-300 leading-none ${isOpen ? 'rotate-45 text-white' : 'text-neutral-400'}`}>+</span>
+                    </button>
+                    
+                    {/* Accordion Content pane with smooth CSS grid height transition */}
+                    <div 
+                      className={`grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+                        isOpen ? 'grid-rows-[1fr] opacity-100 border-t border-neutral-800' : 'grid-rows-[0fr] opacity-0 border-t-0'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="p-4 pt-3">
+                          <p className="text-neutral-400 text-xs leading-relaxed">
+                            {acc.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
-          {/* Right Column: Client's Feedback */}
+          {/* Right Column: Inspired by Great Minds */}
           <div className="flex flex-col gap-6">
             <h3 className="font-sans text-xl font-medium text-neutral-400 tracking-wider">
-              CLIENT'S <span className="font-extrabold text-white">FEEDBACK</span>
+              INSPIRED BY <span className="font-extrabold text-white">GREAT MINDS</span>
             </h3>
 
             <div className="w-16 h-[1px] bg-neutral-700 mt-[-8px] mb-4"></div>
 
             {/* Testimonial card */}
-            <div className="flex gap-4">
-              <div className="text-neutral-500 shrink-0">
+            <div className="flex gap-4 min-h-[180px] sm:min-h-[160px]">
+              <div className="text-neutral-500 shrink-0 pt-1">
                 <Quote size={40} className="stroke-1" />
               </div>
-              <div className="flex flex-col gap-4">
-                <p className="text-neutral-400 text-sm leading-relaxed italic">
+              <div className="flex flex-col justify-between w-full">
+                <p className="text-neutral-400 text-sm leading-relaxed italic min-h-[100px] flex items-center">
                   {feedbacks[activeIndex].text}
                 </p>
-                <span className="text-neutral-300 text-xs font-bold tracking-widest uppercase mt-2">
+                <span className="text-neutral-300 text-xs font-bold tracking-widest uppercase mt-4">
                   {feedbacks[activeIndex].name}, <span className="font-medium text-neutral-500">{feedbacks[activeIndex].role}</span>
                 </span>
               </div>

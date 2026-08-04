@@ -41,7 +41,7 @@ const About = () => {
       year: 'Sept 2024 – Feb 2026',
       company: 'Students Special Group (SSG), Bannari Amman Institute of Technology',
       role: 'Web Developer',
-      desc: '• Developed backend services, RESTful APIs, and database schemas using Node.js & MySQL.\n• Mentored 50+ students in web development and software engineering best practices.',
+      desc: '• Developed backend services, RESTful APIs, and database schemas using Node.js & MySQL.\n• Mentored 150+ students in web development and software engineering best practices.',
     },
   ];
 
