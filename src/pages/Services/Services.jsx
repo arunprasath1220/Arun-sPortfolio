@@ -1,37 +1,37 @@
 import React from 'react';
-import { Laptop, LayoutGrid, Paintbrush, Smartphone, Award, BookOpen } from 'lucide-react';
+import { Cpu, LayoutGrid, Smartphone, Code2, Globe, Boxes } from 'lucide-react';
 
 const Services = ({ setActiveSection }) => {
   const serviceList = [
     {
-      icon: <Laptop size={32} className="stroke-1" />,
-      title: <>WEB <span className="font-extrabold text-white">DESIGN</span> & UI</>,
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
+      icon: <Cpu size={32} className="stroke-1" />,
+      title: <>SYSTEM <span className="font-extrabold text-white">DESIGN</span> & ARCHITECTURE</>,
+      desc: 'Design scalable software architectures, APIs, databases, and cloud-ready systems for modern applications.',
     },
     {
       icon: <LayoutGrid size={32} className="stroke-1" />,
-      title: <>USER <span className="font-extrabold text-white">FLOW</span> & <span className="font-extrabold text-white">WIREFRAMES</span></>,
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
-    },
-    {
-      icon: <Paintbrush size={32} className="stroke-1" />,
-      title: <>VISUAL <span className="font-extrabold text-white">DESIGN</span></>,
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
+      title: <>WEB <span className="font-extrabold text-white">APPLICATION</span> DESIGN</>,
+      desc: 'Create responsive and user-friendly web interfaces with clean layouts and intuitive user experiences.',
     },
     {
       icon: <Smartphone size={32} className="stroke-1" />,
       title: <>MOBILE <span className="font-extrabold text-white">APP</span> DESIGN</>,
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
+      desc: 'Design engaging mobile interfaces focused on usability, accessibility, and performance.',
     },
     {
-      icon: <Award size={32} className="stroke-1" />,
-      title: <>LOGO <span className="font-extrabold text-white">DESIGN</span></>,
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
+      icon: <Code2 size={32} className="stroke-1" />,
+      title: <>WEB <span className="font-extrabold text-white">DEVELOPMENT</span></>,
+      desc: 'Build secure, responsive, and high-performance web applications using modern full-stack technologies.',
     },
     {
-      icon: <BookOpen size={32} className="stroke-1" />,
-      title: <>PRINT <span className="font-extrabold text-white">DESIGN</span></>,
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit.',
+      icon: <Globe size={32} className="stroke-1" />,
+      title: <>MOBILE <span className="font-extrabold text-white">DEVELOPMENT</span></>,
+      desc: 'Develop cross-platform mobile applications with seamless backend integration and smooth user experiences.',
+    },
+    {
+      icon: <Boxes size={32} className="stroke-1" />,
+      title: <>SOFTWARE <span className="font-extrabold text-white">SOLUTIONS</span></>,
+      desc: 'Deliver complete software solutions that streamline processes and solve real-world business problems.',
     },
   ];
 
