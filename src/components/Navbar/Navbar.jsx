@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import profileImg from '../../assets/profile_img2.png';
+import profileImg from '../../assets/profile_img3.png';
 
 const Navbar = ({ activeSection, setActiveSection }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Dribbble } from 'lucide-react';
-import profileImg from '../../assets/profile_img2.png';
+import profileImg from '../../assets/profile_img3.png';
 
 const Home = ({ setActiveSection }) => {
   const handleLetTalk = () => {
@@ -24,11 +24,11 @@ const Home = ({ setActiveSection }) => {
   return (
     <section 
       id="home" 
-      className="w-full bg-[#fcfcfc] border-b border-neutral-200 min-h-[calc(100vh-80px)] flex flex-col justify-center py-12 relative text-left"
+      className="w-full bg-[#fcfcfc] border-b border-neutral-200 min-h-[calc(100vh-80px)] flex flex-col justify-center py-12 relative text-left overflow-hidden"
     >
-      <div className="w-full max-w-[1200px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+      <div className="w-full max-w-[1200px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center flex-1">
         {/* Left Content (Text) */}
-        <div className="flex flex-col items-start pr-0 lg:pr-8">
+        <div className="flex flex-col items-start pr-0 lg:pr-8 py-8">
           <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-6">// WELCOME PORTFOLIO</span>
           
           <h1 className="font-sans font-medium text-4xl sm:text-5xl md:text-[52px] leading-[1.15] text-neutral-500 tracking-tight mb-6">
@@ -48,13 +48,16 @@ const Home = ({ setActiveSection }) => {
           </button>
         </div>
 
-        {/* Right Content (Grayscale Portrait) */}
-        <div className="relative flex justify-center items-center h-full w-full">
-          <div className="relative border border-neutral-200 p-3 bg-white shadow-md max-w-[420px] w-full">
+        {/* Right Content (Exact portrait size & layout matching reference screenshot) */}
+        <div className="relative flex justify-end items-center h-full w-full min-h-[420px] lg:min-h-[480px]">
+          <div className="relative w-full h-full max-h-[500px] flex items-center justify-end overflow-hidden">
+            {/* Soft left gradient fade mask matching reference screenshot */}
+            <div className="absolute top-0 bottom-0 left-0 w-32 sm:w-48 h-full bg-gradient-to-r from-[#fcfcfc] via-[#fcfcfc]/75 to-transparent z-10 pointer-events-none"></div>
+            
             <img 
               src={profileImg} 
               alt="Arun Portrait"
-              className="w-full h-auto grayscale object-cover"
+              className="w-full h-full object-cover object-center grayscale brightness-[1.02] contrast-[1.05]"
             />
           </div>
         </div>
