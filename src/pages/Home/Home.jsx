@@ -54,6 +54,9 @@ const Home = ({ setActiveSection }) => {
             {/* Soft left gradient fade mask matching reference screenshot */}
             <div className="absolute top-0 bottom-0 left-0 w-32 sm:w-48 h-full bg-gradient-to-r from-[#fcfcfc] via-[#fcfcfc]/75 to-transparent z-10 pointer-events-none"></div>
             
+            {/* Slight bottom gradient fade to merge image seamlessly into the page */}
+            <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-t from-[#fcfcfc] via-[#fcfcfc]/60 to-transparent z-10 pointer-events-none"></div>
+            
             <img 
               src={profileImg} 
               alt="Arun Portrait"
