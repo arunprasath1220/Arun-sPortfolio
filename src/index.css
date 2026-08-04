@@ -65,6 +65,21 @@
   to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes blink-card {
+  0%, 100% {
+    border-color: #e5e5e5;
+    transform: translateX(0px);
+  }
+  50% {
+    border-color: #0a0a0a;
+    transform: translateX(4px);
+  }
+}
+
+.animate-blink-card {
+  animation: blink-card 1.2s cubic-bezier(0.4, 0, 0.2, 1) 4;
+}
+
 /* Custom Scrollbar and Base Overrides */
 html {
   scroll-behavior: smooth;

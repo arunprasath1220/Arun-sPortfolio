@@ -16,6 +16,8 @@ const Home = ({ setActiveSection }) => {
         top: offsetPosition,
         behavior: 'smooth'
       });
+
+      window.dispatchEvent(new CustomEvent('highlight-phone-card'));
     }
   };
 
