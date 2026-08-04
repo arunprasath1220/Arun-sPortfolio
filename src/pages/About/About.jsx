@@ -11,31 +11,37 @@ const About = () => {
 
   const education = [
     {
-      year: '2005-2007',
-      institution: 'NY UNIVERSITY',
-      role: 'GRAPHIC DESIGN',
-      desc: 'Poin dui orci, pretium eget fringilla sit amet, luctus a nisl. Praesent tristique scelerisque sapien at aliquet.',
+      year: '2024 – 2028',
+      institution: 'Bannari Amman Institute of Technology, Anna University',
+      role: 'Bachelor of Engineering in Computer Science and Engineering',
+      desc: 'CGPA: 8.23/10',
     },
     {
-      year: '2007-2009',
-      institution: 'APEX UNIVERSITY',
-      role: 'WEB DESIGN & UI',
-      desc: 'Poin dui orci, pretium eget fringilla sit amet, luctus a nisl. Praesent tristique scelerisque sapien at aliquet.',
+      year: '2024',
+      institution: 'SRV Boys Higher Secondary School, State Board',
+      role: 'Higher Secondary Certificate (HSC)',
+      desc: 'Percentage: 92%\nPCM: 191.50',
+    },
+    {
+      year: '2022',
+      institution: 'SVM Higher Secondary School, State Board',
+      role: 'Secondary School Leaving Certificate (SSLC)',
+      desc: 'Percentage: 93%',
     },
   ];
 
   const experience = [
     {
-      year: '2007-2010',
-      company: 'ENTER AD',
-      role: 'GRAPHIC DESIGNER',
-      desc: 'Poin dui orci, pretium eget fringilla sit amet, luctus a nisl. Praesent tristique scelerisque sapien at aliquet.',
+      year: 'Mar 2026 – Present',
+      company: 'Personalized Skill Team (PS), Bannari Amman Institute of Technology',
+      role: 'Student Intern',
+      desc: '• Contributed to institutional web applications with React, Node.js, Express & MySQL.\n• Built backend modules, REST APIs, and improved academic management systems.',
     },
     {
-      year: '2010-2012',
-      company: 'SAPE DESIGN',
-      role: 'CREATIVE DESIGNER',
-      desc: 'Poin dui orci, pretium eget fringilla sit amet, luctus a nisl. Praesent tristique scelerisque sapien at aliquet.',
+      year: 'Sept 2024 – Feb 2026',
+      company: 'Students Special Group (SSG), Bannari Amman Institute of Technology',
+      role: 'Web Developer',
+      desc: '• Developed backend services, RESTful APIs, and database schemas using Node.js & MySQL.\n• Mentored 50+ students in web development and software engineering best practices.',
     },
   ];
 
@@ -60,7 +66,7 @@ const About = () => {
               WHO <span className="font-extrabold text-neutral-950">AM I?</span>
             </h3>
             <p className="text-neutral-500 text-[15px] leading-relaxed">
-             I'm Arunprasath P — a Full Stack Developer and CS engineering student who turns ideas into scalable, user-centric products.
+             I'm Arunprasath Panneerselvam — a Full Stack Developer and CS engineering student who turns ideas into scalable, user-centric products.
             </p>
             <p className="text-neutral-500 text-[15px] leading-relaxed">
               I work across the stack with React, Node.js, Express, MySQL, Tailwind, and Google Cloud — shipping everything from intuitive interfaces to secure, high-performance backends. I've built enterprise applications used across my institution, contributed to large-scale academic platforms, and competed in national-level hackathons.
@@ -124,7 +130,7 @@ const About = () => {
                   </div>
                   <div className="w-2/3 flex flex-col text-left">
                     <h4 className="font-sans font-bold text-sm text-neutral-900 tracking-wide mb-2 uppercase">{item.role}</h4>
-                    <p className="text-neutral-500 text-xs leading-relaxed">{item.desc}</p>
+                    <p className="text-neutral-500 text-xs leading-relaxed whitespace-pre-line">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -143,7 +149,7 @@ const About = () => {
                   </div>
                   <div className="w-2/3 flex flex-col text-left">
                     <h4 className="font-sans font-bold text-sm text-neutral-900 tracking-wide mb-2 uppercase">{item.role}</h4>
-                    <p className="text-neutral-500 text-xs leading-relaxed">{item.desc}</p>
+                    <p className="text-neutral-500 text-xs leading-relaxed whitespace-pre-line">{item.desc}</p>
                   </div>
                 </div>
               ))}
