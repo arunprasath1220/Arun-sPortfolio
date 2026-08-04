@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import resumePdf from "../../assets/Arun's-Resume.pdf";
 
 const About = () => {
   const skills = [
@@ -59,18 +60,19 @@ const About = () => {
               WHO <span className="font-extrabold text-neutral-950">AM I?</span>
             </h3>
             <p className="text-neutral-500 text-[15px] leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit, esse pariatur in minima nostrum harum dolorum perferendis quasi dolor autem deleniti inventore.
+             I'm Arunprasath P — a Full Stack Developer and CS engineering student who turns ideas into scalable, user-centric products.
             </p>
             <p className="text-neutral-500 text-[15px] leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non vel, sint nisi possimus sunt veritatis totam velit, esse pariatur in minima nostrum harum dolorum perferendis quasi dolor autem deleniti inventore.
-            </p>
-            
-            <button 
-              className="w-fit bg-neutral-900 text-white border border-neutral-900 py-3.5 px-8 text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-neutral-900 transition-colors duration-300 cursor-pointer mt-4"
-              onClick={() => alert("CV Download Triggered")}
+              I work across the stack with React, Node.js, Express, MySQL, Tailwind, and Google Cloud — shipping everything from intuitive interfaces to secure, high-performance backends. I've built enterprise applications used across my institution, contributed to large-scale academic platforms, and competed in national-level hackathons.
+              For me, great software isn't just functional — it's thoughtful design, efficient engineering, and real impact.
+              </p>
+            <a 
+              href={resumePdf}
+              download="Arun's-Resume.pdf"
+              className="w-fit inline-block text-center bg-neutral-900 text-white border border-neutral-900 py-3.5 px-8 text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-neutral-900 transition-colors duration-300 cursor-pointer mt-4"
             >
               DOWNLOAD MY CV
-            </button>
+            </a>
           </div>
 
           {/* Right Column: Skills */}
@@ -79,7 +81,8 @@ const About = () => {
               EXPERT <span className="font-extrabold text-neutral-950">IN</span>
             </h3>
             <p className="text-neutral-500 text-sm leading-relaxed mb-4">
-              Poin dui orci, pretium eget fringilla sit amet, luctus a nisl. Praesent tristique scelerisque sapien at aliquet.
+              I specialize in building complete digital products — and thinking fast when it matters most.
+              From architecting full-stack systems to solving real-world problems live at the pitch, I bring both engineering depth and on-the-spot clarity.
             </p>
 
             {/* Custom Styled Skill Bars */}
