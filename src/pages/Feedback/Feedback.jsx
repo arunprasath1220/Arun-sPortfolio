@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Quote, Rocket, Zap, Target, Star, Briefcase, Award, MessageSquare } from 'lucide-react';
 import postcardImg1 from '../../assets/postcardimg1.jpg';
 import postcardImg2 from '../../assets/postcardimg2.jpg';
@@ -39,6 +39,15 @@ const Feedback = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Auto-advance testimonial and image selection every 10 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % feedbacks.length);
+    }, 10000);
+
+    return () => clearInterval(timer);
+  }, [activeIndex, feedbacks.length]);
 
   // Accordions list (Why Me?)
   const [openAccordion, setOpenAccordion] = useState(0);
@@ -175,7 +184,7 @@ const Feedback = () => {
             </div>
           </div>
 
-          {/* Right Column: Inspired by Great Minds */}
+          {/* Right Column: Inspired by Great Minds (Clean unboxed layout with fixed height) */}
           <div className="flex flex-col gap-6">
             <h3 className="font-sans text-xl font-medium text-neutral-400 tracking-wider">
               INSPIRED BY <span className="font-extrabold text-white">GREAT MINDS</span>
@@ -183,36 +192,51 @@ const Feedback = () => {
 
             <div className="w-16 h-[1px] bg-neutral-700 mt-[-8px] mb-4"></div>
 
-            {/* Testimonial card */}
-            <div className="flex gap-4 min-h-[180px] sm:min-h-[160px]">
-              <div className="text-neutral-500 shrink-0 pt-1">
-                <Quote size={40} className="stroke-1" />
-              </div>
-              <div className="flex flex-col justify-between w-full">
-                <p className="text-neutral-400 text-sm leading-relaxed italic min-h-[100px] flex items-center">
-                  {feedbacks[activeIndex].text}
-                </p>
-                <span className="text-neutral-300 text-xs font-bold tracking-widest uppercase mt-4">
-                  {feedbacks[activeIndex].name}, <span className="font-medium text-neutral-500">{feedbacks[activeIndex].role}</span>
-                </span>
+            {/* Testimonial area with fixed height to prevent layout shifting */}
+            <div className="h-[190px] flex flex-col justify-between w-full">
+              <div key={activeIndex} className="flex flex-col justify-between h-full w-full">
+                <div className="flex gap-4 items-start">
+                  <div className="text-neutral-500 shrink-0 pt-1">
+                    <Quote size={40} className="stroke-1" />
+                  </div>
+                  <p className="text-neutral-400 text-sm leading-relaxed italic animate-cinematic-quote">
+                    "{feedbacks[activeIndex].text}"
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-neutral-800/80 pt-4 pl-14 animate-cinematic-author">
+                  <span className="text-neutral-300 text-xs font-bold tracking-widest uppercase">
+                    {feedbacks[activeIndex].name}, <span className="font-medium text-neutral-500">{feedbacks[activeIndex].role}</span>
+                  </span>
+                  <span className="font-mono text-[10px] text-neutral-500">
+                    0{activeIndex + 1} / 0{feedbacks.length}
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Square Clickable Avatars Grid row matching client list */}
-            <div className="flex gap-3 mt-8 pl-14">
+            {/* Square Clickable Avatars Grid row with auto-selection & 10s progress bar */}
+            <div className="flex gap-3 pl-14">
               {feedbacks.map((fb, idx) => (
                 <button
                   key={fb.id}
-                  className={`w-14 h-14 border p-0.5 cursor-pointer bg-neutral-800 transition-all duration-200 ${
-                    activeIndex === idx ? 'border-white' : 'border-neutral-700'
+                  className={`relative overflow-hidden w-14 h-14 border p-0.5 cursor-pointer bg-neutral-800 transition-all duration-300 ${
+                    activeIndex === idx 
+                      ? 'border-white scale-105 shadow-md shadow-white/10' 
+                      : 'border-neutral-700 opacity-60 hover:opacity-100'
                   }`}
                   onClick={() => setActiveIndex(idx)}
                 >
                   <img 
                     src={fb.imageUrl} 
                     alt={fb.name}
-                    className="w-full h-full object-cover grayscale"
+                    className={`w-full h-full object-cover transition-all duration-300 ${
+                      activeIndex === idx ? 'grayscale-0' : 'grayscale'
+                    }`}
                   />
+                  {activeIndex === idx && (
+                    <div className="absolute bottom-0 left-0 h-[2px] bg-white animate-timer-progress" />
+                  )}
                 </button>
               ))}
             </div>

@@ -65,6 +65,70 @@
   to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes cinematicQuoteIn {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(16px) scale(0.97) rotateX(-4deg);
+  }
+  60% {
+    opacity: 0.8;
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1) rotateX(0deg);
+  }
+}
+
+@keyframes cinematicAuthorIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes activePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 12px rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes timerProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-cinematic-quote {
+  animation: cinematicQuoteIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  perspective: 1000px;
+}
+
+.animate-cinematic-author {
+  animation: cinematicAuthorIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+  opacity: 0;
+}
+
+.animate-active-pulse {
+  animation: activePulse 3s infinite ease-in-out;
+}
+
+.animate-timer-progress {
+  animation: timerProgress 10s linear forwards;
+}
+
 @keyframes blink-card {
   0%, 100% {
     border-color: #e5e5e5;
