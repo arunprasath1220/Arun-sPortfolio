@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { Quote, Rocket, Zap, Target } from 'lucide-react';
+import { Quote, Rocket, Zap, Target, Star, Briefcase, Award, MessageSquare } from 'lucide-react';
+import postcardImg1 from '../../assets/postcardimg1.jpg';
+import postcardImg2 from '../../assets/postcardimg2.jpg';
+import postcardImg3 from '../../assets/postcardimg3.jpg';
+import postcardImg4 from '../../assets/postcardimg4.jpg';
 
 const Feedback = () => {
   // Testimonial list (Inspired by Great Minds)
@@ -9,28 +13,28 @@ const Feedback = () => {
       name: 'Albert Einstein',
       role: 'Theoretical Physicist',
       text: "Life is like riding a bicycle. To keep your balance, you must keep moving. Learn from yesterday, live for today, hope for tomorrow. The important thing is never to stop questioning.",
-      imageUrl: 'https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?auto=format&fit=crop&w=150&h=150&q=80',
+      imageUrl: postcardImg1,
     },
     {
       id: 2,
       name: 'Robert H. Schuller',
       role: 'Author & Speaker',
       text: "Tough times never last, but tough people do. Success is never ending, failure is never final. It is courage that counts.",
-      imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80',
+      imageUrl: postcardImg2,
     },
     {
       id: 3,
       name: 'U Thant',
       role: 'Diplomat & UN Secretary-General',
       text: "Peace can only last where human rights are respected, where the people are fed, and where individuals and nations are free. Lasting progress is built on understanding, compassion, and cooperation among all people.",
-      imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80',
+      imageUrl: postcardImg3,
     },
     {
       id: 4,
       name: 'Nelson Mandela',
       role: 'Leader & Statesman',
       text: "The greatest glory in living lies not in never falling, but in rising every time we fall. Courage is not the absence of fear, but the triumph over it. What matters is the willingness to keep moving forward despite every challenge.",
-      imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80',
+      imageUrl: postcardImg4,
     },
   ];
 
@@ -60,6 +64,43 @@ const Feedback = () => {
     },
   ];
 
+  // Dummy Work Feedback Data (Trial info - replace with real project feedback later)
+  const workFeedbacks = [
+    {
+      id: 1,
+      project: 'INSTITUTIONAL PLACEMENT PORTAL',
+      category: 'FULL-STACK DEVELOPMENT',
+      rating: 5,
+      feedback: 'Arun engineered a robust placement management portal with seamless user workflows and high query performance. Exceptional code quality and prompt delivery.',
+      client: 'Placement Cell Team',
+      role: 'Institutional Client',
+      metrics: '100% On-Time • High Scale',
+      icon: <Briefcase size={16} className="text-neutral-400" />,
+    },
+    {
+      id: 2,
+      project: 'REAL-TIME ANALYTICS DASHBOARD',
+      category: 'SYSTEM ARCHITECTURE & UI',
+      rating: 5,
+      feedback: 'Delivered intuitive real-time metrics visualizer with pixel-perfect responsive layout. Clean, maintainable component design and fast load times.',
+      client: 'Product Engineering Lead',
+      role: 'Tech Lead Review',
+      metrics: '99.9% Uptime • Fast Render',
+      icon: <Award size={16} className="text-neutral-400" />,
+    },
+    {
+      id: 3,
+      project: 'STUDENT SKILL MANAGEMENT SYSTEM',
+      category: 'REST API & DATABASE DESIGN',
+      rating: 5,
+      feedback: 'Outstanding database schema optimization and API performance. Highly collaborative developer who turns complex business requirements into elegant solutions.',
+      client: 'Personalized Skill Team (PS)',
+      role: 'Project Supervisor',
+      metrics: '50k+ Queries • Zero Downtime',
+      icon: <MessageSquare size={16} className="text-neutral-400" />,
+    },
+  ];
+
   const toggleAccordion = (id) => {
     if (openAccordion === id) {
       setOpenAccordion(-1);
@@ -78,8 +119,16 @@ const Feedback = () => {
     <section id="feedback" className="w-full bg-[#1b1b1b] py-24 text-left border-b border-neutral-800">
       <div className="w-full max-w-[1200px] mx-auto px-8">
         
+        {/* Section Heading with double underlines matching Services section */}
+        <div className="text-center mb-20">
+          <h2 className="font-sans font-bold text-3xl tracking-widest text-white uppercase">FEEDBACK & REVIEWS</h2>
+          <div className="w-24 h-[1px] bg-neutral-600 mx-auto mt-3 relative">
+            <div className="w-12 h-[1px] bg-white mx-auto mt-[3px]"></div>
+          </div>
+        </div>
+
         {/* Main Grid Layout matching screenshot */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
           
           {/* Left Column: Why Me? (Accordion Collapsible groups) */}
           <div className="flex flex-col gap-6">
@@ -171,9 +220,77 @@ const Feedback = () => {
 
         </div>
 
+        {/* Bottom Section: Details About Work as Feedback (Trial Info) */}
+        <div className="pt-16 border-t border-neutral-800 flex flex-col gap-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <h4 className="font-sans font-bold text-xl text-white tracking-wide uppercase">
+                WORK <span className="text-neutral-400">FEEDBACK & REVIEWS</span>
+              </h4>
+              <p className="text-neutral-400 text-xs mt-1">
+                Client & team reviews on delivered software solutions and project execution
+              </p>
+            </div>
+            <span className="font-mono text-[10px] text-neutral-400 bg-neutral-900 border border-neutral-800 px-3 py-1.5 uppercase tracking-widest">
+              // WORK REVIEWS (TRIAL)
+            </span>
+          </div>
+
+          {/* 3 Work Feedback Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {workFeedbacks.map((item) => (
+              <div 
+                key={item.id}
+                className="bg-neutral-900/30 border border-neutral-800 p-6 flex flex-col justify-between gap-6 hover:border-neutral-700 transition-all duration-300 group"
+              >
+                <div className="flex flex-col gap-4">
+                  {/* Category & Rating */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      {item.icon}
+                      <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
+                        {item.category}
+                      </span>
+                    </div>
+                    <div className="flex text-white text-xs gap-0.5">
+                      {'★'.repeat(item.rating)}
+                    </div>
+                  </div>
+
+                  {/* Project Title */}
+                  <h5 className="font-sans font-bold text-sm text-white tracking-wide uppercase group-hover:text-neutral-200 transition-colors">
+                    {item.project}
+                  </h5>
+
+                  {/* Feedback Text */}
+                  <p className="text-neutral-400 text-xs leading-relaxed italic">
+                    "{item.feedback}"
+                  </p>
+                </div>
+
+                {/* Reviewer Details & Impact Metrics */}
+                <div className="border-t border-neutral-800/80 pt-4 flex flex-col gap-2">
+                  <div className="flex justify-between items-center">
+                    <span className="font-sans text-xs font-bold text-neutral-200 uppercase tracking-wider">
+                      {item.client}
+                    </span>
+                    <span className="font-mono text-[10px] text-neutral-400">
+                      {item.role}
+                    </span>
+                  </div>
+                  <div className="text-[10px] font-mono text-neutral-400 pt-1">
+                    {item.metrics}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
 };
 
 export default Feedback;
+

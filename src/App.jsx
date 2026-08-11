@@ -70,7 +70,7 @@ function App() {
             © {new Date().getFullYear()} ARUN. ALL RIGHTS RESERVED.
           </p>
           <div className="flex flex-col md:flex-row gap-2 md:gap-8 items-center">
-            <span className="font-mono text-xs text-text-muted">// DESIGNED IN B&W</span>
+            {/* <span className="font-mono text-xs text-text-muted">// DESIGNED IN B&W</span> */}
             <span className="font-mono text-xs text-text-muted">// BUILT WITH REACT + TAILWIND</span>
           </div>
         </div>
