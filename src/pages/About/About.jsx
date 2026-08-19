@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import resumePdf from "../../assets/Arun's-Resume.pdf";
+import Reveal from '../../components/Reveal/Reveal';
 
 const About = () => {
   const skills = [
@@ -50,18 +51,20 @@ const About = () => {
       <div className="w-full max-w-[1200px] mx-auto px-8">
         
         {/* Section Heading with double underlines */}
-        <div className="text-center mb-20">
-          <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">ABOUT ME</h2>
-          <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
-            <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+        <Reveal direction="down">
+          <div className="text-center mb-20">
+            <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">ABOUT ME</h2>
+            <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
+              <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
           
           {/* Left Column: Bio */}
-          <div className="flex flex-col gap-6">
+          <Reveal direction="right" delay={0.2} className="flex flex-col gap-6">
             <h3 className="font-sans text-xl font-medium text-neutral-500 tracking-wider">
               WHO <span className="font-extrabold text-neutral-950">AM I?</span>
             </h3>
@@ -79,10 +82,10 @@ const About = () => {
             >
               DOWNLOAD MY CV
             </a>
-          </div>
+          </Reveal>
 
           {/* Right Column: Skills */}
-          <div className="flex flex-col gap-6">
+          <Reveal direction="left" delay={0.2} className="flex flex-col gap-6">
             <h3 className="font-sans text-xl font-medium text-neutral-500 tracking-wider">
               EXPERT <span className="font-extrabold text-neutral-950">IN</span>
             </h3>
@@ -112,14 +115,14 @@ const About = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Education & Experience Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-neutral-100 pt-16">
           
           {/* Education */}
-          <div>
+          <Reveal direction="up" delay={0.2}>
             <h3 className="font-sans font-bold text-xl tracking-wider text-neutral-900 mb-10 uppercase border-b border-neutral-100 pb-3">EDUCATION</h3>
             <div className="flex flex-col">
               {education.map((item, idx) => (
@@ -135,10 +138,10 @@ const About = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           {/* Experience */}
-          <div>
+          <Reveal direction="up" delay={0.4}>
             <h3 className="font-sans font-bold text-xl tracking-wider text-neutral-900 mb-10 uppercase border-b border-neutral-100 pb-3">EXPERIENCE</h3>
             <div className="flex flex-col">
               {experience.map((item, idx) => (
@@ -154,7 +157,7 @@ const About = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
         </div>
 

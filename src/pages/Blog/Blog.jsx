@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Calendar, Clock, ArrowRight, X, BookOpen } from 'lucide-react';
+import Reveal from '../../components/Reveal/Reveal';
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -119,78 +120,84 @@ Storybook acts as a single source of truth where developers and designers can in
       <div className="w-full max-w-[1200px] mx-auto px-8">
         
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">HELPFUL WRITING</h2>
-          <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
-            <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+        <Reveal direction="down">
+          <div className="text-center mb-16">
+            <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">HELPFUL WRITING</h2>
+            <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
+              <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Search & Category Filter Toolbar */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-neutral-100 pb-6">
-          <div className="relative w-full md:w-80">
-            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none" />
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-neutral-50 border border-neutral-200 text-neutral-800 py-3 pl-11 pr-4 rounded-none text-xs font-semibold tracking-wider uppercase focus:border-neutral-900 outline-none"
-            />
-          </div>
+        <Reveal direction="up" delay={0.2}>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-neutral-100 pb-6">
+            <div className="relative w-full md:w-80">
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full bg-neutral-50 border border-neutral-200 text-neutral-800 py-3 pl-11 pr-4 rounded-none text-xs font-semibold tracking-wider uppercase focus:border-neutral-900 outline-none"
+              />
+            </div>
 
-          <div className="flex gap-2 flex-wrap">
-            {categories.map(cat => (
-              <button
-                key={cat.id}
-                className={`text-[10px] font-bold tracking-widest uppercase bg-transparent text-neutral-500 border border-neutral-200 py-2 px-5 rounded-none cursor-pointer transition-colors duration-200 hover:text-neutral-900 hover:border-neutral-900 ${
-                  activeCategory === cat.id ? 'text-neutral-900 border-neutral-900 bg-neutral-50' : ''
-                }`}
-                onClick={() => setActiveCategory(cat.id)}
-              >
-                {cat.label}
-              </button>
-            ))}
+            <div className="flex gap-2 flex-wrap">
+              {categories.map(cat => (
+                <button
+                  key={cat.id}
+                  className={`text-[10px] font-bold tracking-widest uppercase bg-transparent text-neutral-500 border border-neutral-200 py-2 px-5 rounded-none cursor-pointer transition-colors duration-200 hover:text-neutral-900 hover:border-neutral-900 ${
+                    activeCategory === cat.id ? 'text-neutral-900 border-neutral-900 bg-neutral-50' : ''
+                  }`}
+                  onClick={() => setActiveCategory(cat.id)}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-          {filteredPosts.length > 0 ? (
-            filteredPosts.map(post => (
-              <article
-                key={post.id}
-                className="bg-white border border-neutral-200 p-8 rounded-none cursor-pointer flex flex-col justify-between min-h-[350px] hover:border-neutral-900 transition-all duration-300 group"
-                onClick={() => setSelectedPost(post)}
-              >
-                <div>
-                  <div className="flex items-center gap-4 flex-wrap mb-6">
-                    <span className="font-mono text-[9px] font-bold text-neutral-800 border border-neutral-200 py-1 px-2 rounded-none bg-neutral-50">{post.categoryLabel}</span>
-                    <span className="flex items-center gap-1.5 text-xs text-neutral-400">
-                      <Calendar size={12} /> {post.date}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xs text-neutral-400">
-                      <Clock size={12} /> {post.readTime}
+        <Reveal direction="up" delay={0.4}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map(post => (
+                <article
+                  key={post.id}
+                  className="bg-white border border-neutral-200 p-8 rounded-none cursor-pointer flex flex-col justify-between min-h-[350px] hover:border-neutral-900 transition-all duration-300 group"
+                  onClick={() => setSelectedPost(post)}
+                >
+                  <div>
+                    <div className="flex items-center gap-4 flex-wrap mb-6">
+                      <span className="font-mono text-[9px] font-bold text-neutral-800 border border-neutral-200 py-1 px-2 rounded-none bg-neutral-50">{post.categoryLabel}</span>
+                      <span className="flex items-center gap-1.5 text-xs text-neutral-400">
+                        <Calendar size={12} /> {post.date}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-xs text-neutral-400">
+                        <Clock size={12} /> {post.readTime}
+                      </span>
+                    </div>
+
+                    <h3 className="font-sans font-bold text-lg leading-snug mb-4 text-neutral-900 group-hover:text-neutral-500 transition-colors duration-200">{post.title}</h3>
+                    <p className="text-xs text-neutral-500 leading-relaxed mb-8">{post.summary}</p>
+                  </div>
+                  
+                  <div className="border-t border-neutral-100 pt-5">
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase text-neutral-900">
+                      Read Article <ArrowRight size={14} />
                     </span>
                   </div>
-
-                  <h3 className="font-sans font-bold text-lg leading-snug mb-4 text-neutral-900 group-hover:text-neutral-500 transition-colors duration-200">{post.title}</h3>
-                  <p className="text-xs text-neutral-500 leading-relaxed mb-8">{post.summary}</p>
-                </div>
-                
-                <div className="border-t border-neutral-100 pt-5">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase text-neutral-900">
-                    Read Article <ArrowRight size={14} />
-                  </span>
-                </div>
-              </article>
-            ))
-          ) : (
-            <div className="col-span-full text-center py-16 border border-dashed border-neutral-200 text-neutral-400">
-              <p>No articles match your search or filter requirements.</p>
-            </div>
-          )}
-        </div>
+                </article>
+              ))
+            ) : (
+              <div className="col-span-full text-center py-16 border border-dashed border-neutral-200 text-neutral-400">
+                <p>No articles match your search or filter requirements.</p>
+              </div>
+            )}
+          </div>
+        </Reveal>
       </div>
 
       {/* Blog Article Reader Modal */}

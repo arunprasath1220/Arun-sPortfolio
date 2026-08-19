@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, MessageSquare, AlertCircle } from 'lucide-react';
+import Reveal from '../../components/Reveal/Reveal';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -88,18 +89,20 @@ const Contact = () => {
   return (
     <section id="contact" className="w-full bg-[#fcfcfc] py-24 text-left border-b border-neutral-200">
       {/* Header */}
-      <div className="w-full max-w-[1200px] mx-auto px-8 mb-16">
-        <div className="text-center">
-          <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">CONTACT ME</h2>
-          <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
-            <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+      <Reveal direction="down">
+        <div className="w-full max-w-[1200px] mx-auto px-8 mb-16">
+          <div className="text-center">
+            <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">CONTACT ME</h2>
+            <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
+              <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+            </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       <div className="w-full max-w-[1200px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-start">
         {/* Info Column */}
-        <div className="flex flex-col gap-8">
+        <Reveal direction="right" delay={0.2} className="flex flex-col gap-8">
           <div>
             <h3 className="font-sans font-bold text-xl mb-2 text-neutral-900 uppercase tracking-wide">LET'S START A CONVERSATION</h3>
             <p className="text-sm text-neutral-500 leading-relaxed">Whether you have a specific project in mind, need technical assistance, or simply want to connect, feel free to drop me a message.</p>
@@ -131,28 +134,40 @@ const Contact = () => {
             })}
           </div>
 
-          {/* Minimal B&W Map frame placeholder */}
+          {/* Satellite Map */}
           <div className="h-[200px] bg-white border border-neutral-200 rounded-none relative overflow-hidden p-2">
-            <div className="absolute top-4 left-4 flex flex-col gap-1 z-10">
+            <div className="absolute top-4 left-4 flex flex-col gap-1 z-10 pointer-events-none">
               <span className="font-mono text-[9px] text-neutral-500 bg-white/90 backdrop-blur-xs py-1 px-2.5 border border-neutral-200 font-semibold tracking-wider">LAT: 11.4647° N</span>
               <span className="font-mono text-[9px] text-neutral-500 bg-white/90 backdrop-blur-xs py-1 px-2.5 border border-neutral-200 font-semibold tracking-wider">LNG: 78.1722° E</span>
             </div>
             
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:20px_20px] bg-neutral-50 flex flex-col items-center justify-center">
-              <div className="relative flex items-center justify-center mb-3">
-                <div className="absolute w-10 h-10 border border-neutral-300 rounded-full animate-pulse-radar"></div>
-                <div className="absolute w-20 h-20 border border-dashed border-neutral-200 rounded-full animate-pulse-radar-slow"></div>
-                <span className="w-3.5 h-3.5 bg-neutral-950 rounded-full z-10 shadow-xs"></span>
+            <div className="absolute inset-2 flex flex-col items-center justify-center">
+              <iframe 
+                src="https://maps.google.com/maps?q=Rasipuram,+Tamil+Nadu&t=k&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="grayscale-[20%] brightness-95 contrast-110"
+              ></iframe>
+              <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center bg-black/10">
+                <div className="relative flex items-center justify-center mb-3">
+                  <div className="absolute w-10 h-10 border border-white/60 rounded-full animate-pulse-radar"></div>
+                  <div className="absolute w-20 h-20 border border-dashed border-white/40 rounded-full animate-pulse-radar-slow"></div>
+                  <span className="w-3.5 h-3.5 bg-red-500 rounded-full z-10 shadow-xs border-2 border-white"></span>
+                </div>
+                <span className="font-sans font-extrabold text-xs tracking-widest text-neutral-900 uppercase flex items-center gap-1.5 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 border border-neutral-200 shadow-sm mt-1">
+                  <MapPin size={13} className="text-red-600 shrink-0" /> RASIPURAM, TAMILNADU
+                </span>
               </div>
-              <span className="font-sans font-extrabold text-xs tracking-widest text-neutral-900 uppercase flex items-center gap-1.5 z-10 bg-white/80 px-3 py-1 border border-neutral-200">
-                <MapPin size={13} className="text-neutral-900 shrink-0" /> RASIPURAM, TAMILNADU
-              </span>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Form Column */}
-        <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-none">
+        <Reveal direction="left" delay={0.4} className="bg-white border border-neutral-200 p-8 md:p-10 rounded-none">
           <div className="flex items-center justify-between border-b border-neutral-100 pb-4 mb-8">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-neutral-50 border border-neutral-200 text-neutral-800 rounded-full flex items-center justify-center shrink-0">
@@ -244,7 +259,7 @@ const Contact = () => {
               )}
             </button>
           </form>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

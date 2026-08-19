@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, X } from 'lucide-react';
+import Reveal from '../../components/Reveal/Reveal';
 
 const Works = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -121,56 +122,62 @@ const Works = () => {
       <div className="w-full max-w-[1200px] mx-auto px-8">
         
         {/* Title */}
-        <div className="text-center mb-16">
-          <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">AWESOME WORKS</h2>
-          <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
-            <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+        <Reveal direction="down">
+          <div className="text-center mb-16">
+            <h2 className="font-sans font-bold text-3xl tracking-widest text-neutral-900 uppercase">AWESOME WORKS</h2>
+            <div className="w-24 h-[1px] bg-neutral-300 mx-auto mt-3 relative">
+              <div className="w-12 h-[1px] bg-neutral-900 mx-auto mt-[3px]"></div>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Filter Tabs (Sharp border layouts matching screenshot) */}
-        <div className="flex justify-center flex-wrap gap-2.5 mb-16">
-          {filters.map(filter => (
-            <button
-              key={filter.id}
-              className={`text-[10px] font-bold tracking-widest uppercase py-2.5 px-6 border cursor-pointer transition-colors duration-200 ${
-                activeFilter === filter.id 
-                  ? 'bg-neutral-800 border-neutral-800 text-white' 
-                  : 'bg-white border-neutral-200 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900'
-              }`}
-              onClick={() => setActiveFilter(filter.id)}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div>
+        <Reveal direction="up" delay={0.2}>
+          <div className="flex justify-center flex-wrap gap-2.5 mb-16">
+            {filters.map(filter => (
+              <button
+                key={filter.id}
+                className={`text-[10px] font-bold tracking-widest uppercase py-2.5 px-6 border cursor-pointer transition-colors duration-200 ${
+                  activeFilter === filter.id 
+                    ? 'bg-neutral-800 border-neutral-800 text-white' 
+                    : 'bg-white border-neutral-200 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900'
+                }`}
+                onClick={() => setActiveFilter(filter.id)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Projects Masonry Grid using Tailwind columns (exactly like collage) */}
-        <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6">
-          {filteredProjects.map(proj => (
-            <div
-              key={proj.id}
-              className="break-inside-avoid relative group cursor-pointer border border-neutral-200 p-2 bg-white"
-              onClick={() => setSelectedProject(proj)}
-            >
-              {/* Grayscale hover effects */}
-              <div className="relative overflow-hidden">
-                <img 
-                  src={proj.imageUrl} 
-                  alt={proj.title}
-                  className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                />
-                
-                {/* Image overlay displaying Case Study pill */}
-                <div className="absolute inset-0 bg-neutral-900/5 group-hover:bg-neutral-900/40 flex justify-center items-end pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="bg-white text-neutral-900 text-[10px] font-bold tracking-widest uppercase py-2 px-5 rounded-none shadow-md border border-neutral-200">
-                    CASE STUDY
-                  </span>
+        <Reveal direction="up" delay={0.4}>
+          <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6">
+            {filteredProjects.map(proj => (
+              <div
+                key={proj.id}
+                className="break-inside-avoid relative group cursor-pointer border border-neutral-200 p-2 bg-white"
+                onClick={() => setSelectedProject(proj)}
+              >
+                {/* Grayscale hover effects */}
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={proj.imageUrl} 
+                    alt={proj.title}
+                    className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                  
+                  {/* Image overlay displaying Case Study pill */}
+                  <div className="absolute inset-0 bg-neutral-900/5 group-hover:bg-neutral-900/40 flex justify-center items-end pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="bg-white text-neutral-900 text-[10px] font-bold tracking-widest uppercase py-2 px-5 rounded-none shadow-md border border-neutral-200">
+                      CASE STUDY
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
 
       {/* Detailed Modal Overlay */}

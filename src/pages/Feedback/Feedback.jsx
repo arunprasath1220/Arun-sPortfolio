@@ -4,6 +4,7 @@ import postcardImg1 from '../../assets/postcardimg1.jpg';
 import postcardImg2 from '../../assets/postcardimg2.jpg';
 import postcardImg3 from '../../assets/postcardimg3.jpg';
 import postcardImg4 from '../../assets/postcardimg4.jpg';
+import Reveal from '../../components/Reveal/Reveal';
 
 const Feedback = () => {
   // Testimonial list (Inspired by Great Minds)
@@ -129,18 +130,20 @@ const Feedback = () => {
       <div className="w-full max-w-[1200px] mx-auto px-8">
         
         {/* Section Heading with double underlines matching Services section */}
-        <div className="text-center mb-20">
-          <h2 className="font-sans font-bold text-3xl tracking-widest text-white uppercase">FEEDBACK & REVIEWS</h2>
-          <div className="w-24 h-[1px] bg-neutral-600 mx-auto mt-3 relative">
-            <div className="w-12 h-[1px] bg-white mx-auto mt-[3px]"></div>
+        <Reveal direction="down">
+          <div className="text-center mb-20">
+            <h2 className="font-sans font-bold text-3xl tracking-widest text-white uppercase">FEEDBACK & REVIEWS</h2>
+            <div className="w-24 h-[1px] bg-neutral-600 mx-auto mt-3 relative">
+              <div className="w-12 h-[1px] bg-white mx-auto mt-[3px]"></div>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Main Grid Layout matching screenshot */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
           
           {/* Left Column: Why Me? (Accordion Collapsible groups) */}
-          <div className="flex flex-col gap-6">
+          <Reveal direction="right" delay={0.2} className="flex flex-col gap-6">
             <h3 className="font-sans text-xl font-medium text-neutral-400 tracking-wider">
               WHY <span className="font-extrabold text-white">ME?</span>
             </h3>
@@ -182,10 +185,10 @@ const Feedback = () => {
                 );
               })}
             </div>
-          </div>
+          </Reveal>
 
           {/* Right Column: Inspired by Great Minds (Clean unboxed layout with fixed height) */}
-          <div className="flex flex-col gap-6">
+          <Reveal direction="left" delay={0.2} className="flex flex-col gap-6">
             <h3 className="font-sans text-xl font-medium text-neutral-400 tracking-wider">
               INSPIRED BY <span className="font-extrabold text-white">GREAT MINDS</span>
             </h3>
@@ -240,76 +243,79 @@ const Feedback = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </Reveal>
 
         </div>
 
         {/* Bottom Section: Details About Work as Feedback (Trial Info) */}
-        <div className="pt-16 border-t border-neutral-800 flex flex-col gap-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-              <h4 className="font-sans font-bold text-xl text-white tracking-wide uppercase">
-                WORK <span className="text-neutral-400">FEEDBACK & REVIEWS</span>
-              </h4>
-              <p className="text-neutral-400 text-xs mt-1">
-                Client & team reviews on delivered software solutions and project execution
-              </p>
-            </div>
-            <span className="font-mono text-[10px] text-neutral-400 bg-neutral-900 border border-neutral-800 px-3 py-1.5 uppercase tracking-widest">
-              // WORK REVIEWS (TRIAL)
-            </span>
-          </div>
-
-          {/* 3 Work Feedback Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {workFeedbacks.map((item) => (
-              <div 
-                key={item.id}
-                className="bg-neutral-900/30 border border-neutral-800 p-6 flex flex-col justify-between gap-6 hover:border-neutral-700 transition-all duration-300 group"
-              >
-                <div className="flex flex-col gap-4">
-                  {/* Category & Rating */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      {item.icon}
-                      <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
-                        {item.category}
-                      </span>
-                    </div>
-                    <div className="flex text-white text-xs gap-0.5">
-                      {'★'.repeat(item.rating)}
-                    </div>
-                  </div>
-
-                  {/* Project Title */}
-                  <h5 className="font-sans font-bold text-sm text-white tracking-wide uppercase group-hover:text-neutral-200 transition-colors">
-                    {item.project}
-                  </h5>
-
-                  {/* Feedback Text */}
-                  <p className="text-neutral-400 text-xs leading-relaxed italic">
-                    "{item.feedback}"
-                  </p>
-                </div>
-
-                {/* Reviewer Details & Impact Metrics */}
-                <div className="border-t border-neutral-800/80 pt-4 flex flex-col gap-2">
-                  <div className="flex justify-between items-center">
-                    <span className="font-sans text-xs font-bold text-neutral-200 uppercase tracking-wider">
-                      {item.client}
-                    </span>
-                    <span className="font-mono text-[10px] text-neutral-400">
-                      {item.role}
-                    </span>
-                  </div>
-                  <div className="text-[10px] font-mono text-neutral-400 pt-1">
-                    {item.metrics}
-                  </div>
-                </div>
+        <Reveal direction="up" delay={0.4}>
+          <div className="pt-16 border-t border-neutral-800 flex flex-col gap-10">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div>
+                <h4 className="font-sans font-bold text-xl text-white tracking-wide uppercase">
+                  WORK <span className="text-neutral-400">FEEDBACK & REVIEWS</span>
+                </h4>
+                <p className="text-neutral-400 text-xs mt-1">
+                  Client & team reviews on delivered software solutions and project execution
+                </p>
               </div>
-            ))}
+              <span className="font-mono text-[10px] text-neutral-400 bg-neutral-900 border border-neutral-800 px-3 py-1.5 uppercase tracking-widest">
+                // WORK REVIEWS (TRIAL)
+              </span>
+            </div>
+
+            {/* 3 Work Feedback Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {workFeedbacks.map((item, idx) => (
+                <Reveal key={item.id} direction="up" delay={idx * 0.1}>
+                  <div 
+                    className="bg-neutral-900/30 border border-neutral-800 p-6 flex flex-col justify-between gap-6 hover:border-neutral-700 transition-all duration-300 group h-full"
+                  >
+                    <div className="flex flex-col gap-4">
+                      {/* Category & Rating */}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          {item.icon}
+                          <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
+                            {item.category}
+                          </span>
+                        </div>
+                        <div className="flex text-white text-xs gap-0.5">
+                          {'★'.repeat(item.rating)}
+                        </div>
+                      </div>
+
+                      {/* Project Title */}
+                      <h5 className="font-sans font-bold text-sm text-white tracking-wide uppercase group-hover:text-neutral-200 transition-colors">
+                        {item.project}
+                      </h5>
+
+                      {/* Feedback Text */}
+                      <p className="text-neutral-400 text-xs leading-relaxed italic">
+                        "{item.feedback}"
+                      </p>
+                    </div>
+
+                    {/* Reviewer Details & Impact Metrics */}
+                    <div className="border-t border-neutral-800/80 pt-4 flex flex-col gap-2">
+                      <div className="flex justify-between items-center">
+                        <span className="font-sans text-xs font-bold text-neutral-200 uppercase tracking-wider">
+                          {item.client}
+                        </span>
+                        <span className="font-mono text-[10px] text-neutral-400">
+                          {item.role}
+                        </span>
+                      </div>
+                      <div className="text-[10px] font-mono text-neutral-400 pt-1">
+                        {item.metrics}
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </section>
