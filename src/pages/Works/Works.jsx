@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, X } from 'lucide-react';
 import Reveal from '../../components/Reveal/Reveal';
+import personalisedSkillImg from '../../assets/works/personalised-skill.webp';
+import questionBankImg from '../../assets/works/question-bank.webp';
+import facultyAppraisalImg from '../../assets/works/faculty-appraisal.webp';
+import nbaAccreditationImg from '../../assets/works/nba-accreditation.webp';
+import academicErpImg from '../../assets/works/academic-erp.webp';
+import tuitionAppImg from '../../assets/works/tuition-app.webp';
+import nehaHospitalImg from '../../assets/works/neha-hospital.webp';
 
 const Works = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -8,108 +15,95 @@ const Works = () => {
 
   const filters = [
     { id: 'all', label: 'ALL PROJECTS' },
-    { id: 'web', label: 'WEBSITE' },
-    { id: 'logo', label: 'LOGO' },
-    { id: 'app', label: 'APPLICATION' },
-    { id: 'print', label: 'PRINT DESIGN' },
+    { id: 'learning', label: 'LEARNING & ASSESSMENT' },
+    { id: 'erp', label: 'ACADEMIC ERP' },
+    { id: 'healthcare', label: 'HEALTHCARE' },
   ];
 
   const projects = [
     {
       id: 1,
-      title: 'AURA STUDIO',
-      category: 'web',
-      tag: 'Next.js / WebGL',
-      desc: 'An immersive digital design platform utilizing custom shader effects, fluid grids, and dynamic transition animations.',
-      longDesc: 'Aura Creative Studio is a portfolio website built for a top-tier digital media agency. The main goal was to deliver an outstanding design that performs optimally. It leverages Next.js Server Components, custom WebGL fluid simulations, and Framer Motion layout animations.',
-      tech: ['Next.js', 'React', 'Three.js', 'GLSL', 'CSS Modules'],
-      stats: { Speed: '99/100', SEO: '100/100', Accessibility: '100/100' },
-      links: { demo: 'https://example.com', code: 'https://github.com' },
-      imageUrl: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=400&h=600&q=80',
+      title: 'PERSONALISED SKILL APPLICATION',
+      category: 'learning',
+      tag: 'React / Node.js / MySQL',
+      desc: 'A skill-development portal where students enrol in courses, take MCQ tests and book assessment slots, while admins manage content and track progress.',
+      longDesc: 'Personalised Skill (PS) is a full-stack learning portal for students and administrators at my institution. Students register for courses, attempt MCQ-based tests in a test portal, book assessment slots, request reviews and follow their progress and leaderboard rank. Admins create courses and MCQs (with bulk upload and AI-assisted MCQ generation), review submissions and monitor student progress and test history.',
+      tech: ['React', 'Vite', 'Material UI', 'Recharts', 'Node.js', 'Express', 'MySQL', 'JWT', 'Firebase Auth', 'OpenAI API'],
+      stats: { Roles: 'Student & Admin', 'Sign-in': 'Email (JWT) & Google', Assessment: 'MCQ tests, slot booking & reviews', Admin: 'Bulk upload & AI-assisted MCQs' },
+      links: { code: 'https://github.com/arunprasath1220/PS' },
+      imageUrl: personalisedSkillImg,
     },
     {
       id: 2,
-      title: 'KRONOS MONITOR',
-      category: 'app',
-      tag: 'React / Node / SQL',
-      desc: 'A premium system monitor and database visualizer charting real-time connection traffic and user query loads.',
-      longDesc: 'Kronos Metrics is an enterprise dashboard tailored for database administrators. It queries server connections every 100ms and logs analytics in a optimized graph representation.',
-      tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Chart.js'],
-      stats: { Database: 'PostgreSQL', Latency: '< 15ms', Security: 'AES-256' },
-      links: { demo: 'https://example.com', code: 'https://github.com' },
-      imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&h=300&q=80',
+      title: 'QUESTION BANK GENERATOR',
+      category: 'learning',
+      tag: 'React / Node.js / MySQL',
+      desc: 'A question-bank and exam-paper platform where faculty contribute questions and admins generate semester and PG papers.',
+      longDesc: 'Generate-QB is a question-bank and exam-paper platform for admins and faculty. Admins onboard faculty, map them to departments and subjects, assign question-writing tasks and send questions for vetting. Faculty add questions through a rich-text editor with maths support, or upload them in bulk, and track their task progress. Admins then generate semester and PG question papers with a configurable mark distribution and export them as PDF.',
+      tech: ['React', 'Redux Toolkit', 'Tailwind CSS', 'Material UI', 'CKEditor', 'KaTeX', 'Node.js', 'Express', 'MySQL', 'JWT', 'Firebase Auth'],
+      stats: { Roles: 'Admin & Faculty', Editor: 'Rich text with maths (KaTeX)', Import: 'CSV / Excel bulk upload', Output: 'Semester & PG papers as PDF' },
+      links: { code: 'https://github.com/arunprasath1220/Generate-QB' },
+      imageUrl: questionBankImg,
     },
     {
       id: 3,
-      title: 'VEIL ENCRYPTED',
-      category: 'app',
-      tag: 'React Native / WebRTC',
-      desc: 'An encrypted real-time chat and video communication mobile app containing customizable black-and-white theme skins.',
-      longDesc: 'Veil is a secure, cross-platform communication app built with React Native and WebRTC. It supports video streaming, text chats, voice messages, and customizable design themes.',
-      tech: ['React Native', 'WebRTC', 'Socket.io', 'Node.js', 'MongoDB'],
-      stats: { Encryption: 'E2EE', Video: '1080p 60fps', Platforms: 'iOS & Android' },
-      links: { demo: 'https://example.com', code: 'https://github.com' },
-      imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&h=600&q=80',
+      title: 'FACULTY APPRAISAL',
+      category: 'erp',
+      tag: 'Live Web Portal',
+      desc: 'A live web portal for managing faculty performance appraisals at Bannari Amman Institute of Technology.',
+      longDesc: 'Faculty Appraisal is a live web portal used at Bannari Amman Institute of Technology to manage faculty performance appraisals. Faculty sign in to a secure portal to record and submit their appraisal details, and the institution can review them in one place.',
+      tech: ['React', 'Node.js', 'Express', 'MySQL'],
+      stats: { Status: 'Live in production', Access: 'Secure, login-protected portal', Users: 'Institution faculty' },
+      links: { demo: 'https://facultyappraisal.bitsathy.ac.in/login', code: 'https://github.com/PCDPBIT/FacultyAppraisal' },
+      imageUrl: facultyAppraisalImg,
     },
     {
       id: 4,
-      title: 'APEX STYLE GUIDE',
-      category: 'logo',
-      tag: 'Figma Design',
-      desc: 'A structural UI library built for design consistency, accessibility compliance, and developer documentation templates.',
-      longDesc: 'Apex is a clean, accessible layout framework supporting dark and light themes, detailed typography grids, dynamic variables, and documentation pages.',
-      tech: ['Figma', 'CSS Custom Props', 'Storybook', 'HTML5 Spec', 'WCAG Guides'],
-      stats: { Compliance: 'WCAG AAA', Components: '50+', Themes: 'Light & Dark' },
-      links: { demo: 'https://example.com', code: 'https://github.com' },
-      imageUrl: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&h=300&q=80',
+      title: 'NBA ACCREDITATION',
+      category: 'erp',
+      tag: 'Institutional Web App',
+      desc: 'A web application supporting the National Board of Accreditation (NBA) process at the institution.',
+      longDesc: 'A web application built to support the National Board of Accreditation (NBA) process at the institution, helping departments collect, organise and report the criteria-wise data that accreditation requires in one place.',
+      tech: ['React', 'Node.js', 'Express', 'MySQL'],
+      stats: { Domain: 'Academic accreditation (NBA)', Users: 'Departments & faculty', Focus: 'Criteria-wise data & reporting' },
+      links: { code: 'https://github.com/arunprasath1220/NBA' },
+      imageUrl: nbaAccreditationImg,
     },
     {
       id: 5,
-      title: 'ZEPHYR WIDGETS',
-      category: 'web',
-      tag: 'React / GraphQL',
-      desc: 'A sleek visual hub for monitoring environmental and weather updates from localized smart API feeds.',
-      longDesc: 'Zephyr offers customized analytics tools for viewing temperature, humidity, wind patterns, and local predictions.',
-      tech: ['React', 'GraphQL', 'Tailwind', 'REST Sockets', 'ApexCharts'],
-      stats: { DataRate: 'Live Feed', Widgets: '12 Options', LoadTime: '0.4s' },
-      links: { demo: 'https://example.com', code: 'https://github.com' },
-      imageUrl: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=400&h=300&q=80',
+      title: 'ACADEMIC ERP',
+      category: 'erp',
+      tag: 'Institution-wide Platform',
+      desc: 'A large-scale academic management platform that brings the institution’s day-to-day academic operations onto one system.',
+      longDesc: 'Academic ERP is a large-scale academic management platform that brings the institution’s day-to-day academic operations onto one system. I contributed backend modules and REST APIs to it, working with React, Node.js, Express and MySQL.',
+      tech: ['React', 'Node.js', 'Express', 'MySQL', 'REST APIs'],
+      stats: { Scale: 'Institution-wide platform', 'My role': 'Backend modules & REST APIs', Type: 'Enterprise web application' },
+      links: { code: 'https://github.com/PCDPBIT/academics_erp' },
+      imageUrl: academicErpImg,
     },
     {
       id: 6,
-      title: 'ECHO LUXURY',
-      category: 'print',
-      tag: 'Print Design / Editorial',
-      desc: 'A luxury brand catalog flow highlighting product photography grids and interactive slider overlays.',
-      longDesc: 'Echo is a conceptual interface design that emphasizes clean minimal grids, heavy editorial typography, and high-quality photo frames.',
-      tech: ['Figma Design', 'UX Research', 'Interactive Prototypes', 'Design Systems'],
-      stats: { Columns: '12 Grid', Screens: '24 Layouts', Target: 'Luxury Goods' },
-      links: { demo: 'https://example.com', code: 'https://github.com' },
-      imageUrl: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=400&h=400&q=80',
+      title: 'TUITION APP',
+      category: 'learning',
+      tag: 'React Native / Node.js / MySQL',
+      desc: 'A cross-platform mobile app for running a tuition centre with separate Admin, Faculty and Student experiences.',
+      longDesc: 'Tuition App is a cross-platform mobile app for running a tuition centre, with separate Admin, Faculty and Student experiences. Admins add users and subjects, view faculty and student lists and assign faculty to students, while faculty and students get their own dashboards through role-based bottom-tab navigation. It is backed by a Node.js, Express and MySQL API.',
+      tech: ['React Native', 'React Navigation', 'Lottie', 'Node.js', 'Express', 'MySQL'],
+      stats: { Platform: 'Android & iOS (React Native)', Roles: 'Admin, Faculty & Student', Navigation: 'Role-based bottom tabs' },
+      links: { code: 'https://github.com/arunprasath1220/tution_app' },
+      imageUrl: tuitionAppImg,
     },
     {
       id: 7,
-      title: 'MINIMAL KEYBOARD',
-      category: 'logo',
-      tag: 'Identity Layout',
-      desc: 'A custom keyboard keycap styling visual guideline constructed for custom visual configurations.',
-      longDesc: 'A custom conceptual visual guide for keycap product designers, configuring styles, labels, textures, and custom grey boxes.',
-      tech: ['Figma Design', 'Photoshop CC', 'UX Wireframes'],
-      stats: { Keys: '84 Layout', Form: '75% Size', Materials: 'PBT Double' },
-      links: { demo: 'https://example.com', code: 'https://github.com' },
-      imageUrl: 'https://images.unsplash.com/photo-1555538995-7280bd94165a?auto=format&fit=crop&w=400&h=300&q=80',
-    },
-    {
-      id: 8,
-      title: 'NORDIC POT',
-      category: 'print',
-      tag: 'Brand Asset Catalog',
-      desc: 'Brand identity assets designed for ceramic and organic luxury home decorations.',
-      longDesc: 'Visual identity system mapping custom catalog layouts, typographic rules, and minimalist styling guidelines.',
-      tech: ['Indesign CC', 'Photoshop CC', 'Design Systems'],
-      stats: { Grid: '8 Columns', Pages: '48 Layouts', Cover: 'Linen Board' },
-      links: { demo: 'https://example.com', code: 'https://github.com' },
-      imageUrl: 'https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=400&h=600&q=80',
+      title: 'NEHA HOSPITAL SOFTWARE',
+      category: 'healthcare',
+      tag: 'Live Hospital Management System',
+      desc: 'A live hospital management system for Neha Hospital covering patients, doctors, pharmacy, admissions and billing.',
+      longDesc: 'Neha Hospital Software is a live hospital management system built for Neha Hospital. It brings the hospital’s day-to-day operations into one web application: patient registration and appointments across OPD and IPD, doctor consultations and prescriptions, admissions, discharge and bed management, pharmacy and medicine records, staff, and billing with payments and receipts.',
+      tech: ['React', 'Tailwind CSS'],
+      stats: { Status: 'Live in production', Modules: 'OPD, IPD, pharmacy & billing', Users: 'Doctors & hospital staff' },
+      links: { demo: 'https://neha.tylo.co.in/', code: 'https://github.com/PCDPBIT/NehaHospital' },
+      imageUrl: nehaHospitalImg,
     },
   ];
 
@@ -232,9 +226,11 @@ const Works = () => {
 
                 {/* Links */}
                 <div className="flex gap-4 mt-4">
-                  <a href={selectedProject.links.demo} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 bg-neutral-900 text-white py-3 px-6 rounded-none font-bold text-xs cursor-pointer border border-neutral-900 hover:bg-transparent hover:text-neutral-900 transition-all duration-200">
-                    Live Demo <ExternalLink size={14} />
-                  </a>
+                  {selectedProject.links.demo && (
+                    <a href={selectedProject.links.demo} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 bg-neutral-900 text-white py-3 px-6 rounded-none font-bold text-xs cursor-pointer border border-neutral-900 hover:bg-transparent hover:text-neutral-900 transition-all duration-200">
+                      Live Demo <ExternalLink size={14} />
+                    </a>
+                  )}
                   <a href={selectedProject.links.code} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 bg-transparent text-neutral-900 py-3 px-6 rounded-none font-bold text-xs cursor-pointer border border-neutral-300 hover:border-neutral-900 transition-all duration-200">
                     Source Code <Github size={14} />
                   </a>
