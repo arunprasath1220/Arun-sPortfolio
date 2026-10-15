@@ -4,10 +4,10 @@ import Reveal from '../../components/Reveal/Reveal';
 
 const About = () => {
   const skills = [
-    { name: 'GRAPHIC DESIGN', percentage: 60 },
-    { name: 'CSS', percentage: 90 },
-    { name: 'JAVASCRIPT', percentage: 70 },
-    { name: 'WORDPRESS', percentage: 50 },
+    { name: 'REACT', percentage: 90 },
+    { name: 'NODE.JS', percentage: 85 },
+    { name: 'EXPRESS', percentage: 80 },
+    { name: 'SYSTEM DESIGN', percentage: 70 },
   ];
 
   const education = [

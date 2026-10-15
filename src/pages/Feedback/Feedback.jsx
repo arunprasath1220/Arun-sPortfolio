@@ -139,117 +139,9 @@ const Feedback = () => {
           </div>
         </Reveal>
 
-        {/* Main Grid Layout matching screenshot */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
-          
-          {/* Left Column: Why Me? (Accordion Collapsible groups) */}
-          <Reveal direction="right" delay={0.2} className="flex flex-col gap-6">
-            <h3 className="font-sans text-xl font-medium text-neutral-400 tracking-wider">
-              WHY <span className="font-extrabold text-white">ME?</span>
-            </h3>
-            
-            <div className="w-16 h-[1px] bg-neutral-700 mt-[-8px] mb-4"></div>
-
-            <div className="flex flex-col gap-4 w-full min-h-[290px]">
-              {accordions.map((acc) => {
-                const isOpen = openAccordion === acc.id;
-                return (
-                  <div key={acc.id} className={`border transition-colors duration-300 ${isOpen ? 'border-neutral-600 bg-neutral-900/40' : 'border-neutral-800 bg-neutral-900/10 hover:border-neutral-700'}`}>
-                    {/* Accordion Trigger Header */}
-                    <button
-                      className="w-full flex justify-between items-center p-4 text-xs font-bold uppercase tracking-widest text-neutral-300 hover:text-white transition-colors duration-200 outline-none cursor-pointer"
-                      onClick={() => toggleAccordion(acc.id)}
-                    >
-                      <div className="flex items-center gap-3">
-                        {acc.icon}
-                        <span>{acc.title}</span>
-                      </div>
-                      <span className={`text-base font-medium transition-transform duration-300 leading-none ${isOpen ? 'rotate-45 text-white' : 'text-neutral-400'}`}>+</span>
-                    </button>
-                    
-                    {/* Accordion Content pane with smooth CSS grid height transition */}
-                    <div 
-                      className={`grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
-                        isOpen ? 'grid-rows-[1fr] opacity-100 border-t border-neutral-800' : 'grid-rows-[0fr] opacity-0 border-t-0'
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="p-4 pt-3">
-                          <p className="text-neutral-400 text-xs leading-relaxed">
-                            {acc.desc}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </Reveal>
-
-          {/* Right Column: Inspired by Great Minds (Clean unboxed layout with fixed height) */}
-          <Reveal direction="left" delay={0.2} className="flex flex-col gap-6">
-            <h3 className="font-sans text-xl font-medium text-neutral-400 tracking-wider">
-              INSPIRED BY <span className="font-extrabold text-white">GREAT MINDS</span>
-            </h3>
-
-            <div className="w-16 h-[1px] bg-neutral-700 mt-[-8px] mb-4"></div>
-
-            {/* Testimonial area with fixed height to prevent layout shifting */}
-            <div className="h-[190px] flex flex-col justify-between w-full">
-              <div key={activeIndex} className="flex flex-col justify-between h-full w-full">
-                <div className="flex gap-4 items-start">
-                  <div className="text-neutral-500 shrink-0 pt-1">
-                    <Quote size={40} className="stroke-1" />
-                  </div>
-                  <p className="text-neutral-400 text-sm leading-relaxed italic animate-cinematic-quote">
-                    "{feedbacks[activeIndex].text}"
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between border-t border-neutral-800/80 pt-4 pl-14 animate-cinematic-author">
-                  <span className="text-neutral-300 text-xs font-bold tracking-widest uppercase">
-                    {feedbacks[activeIndex].name}, <span className="font-medium text-neutral-500">{feedbacks[activeIndex].role}</span>
-                  </span>
-                  <span className="font-mono text-[10px] text-neutral-500">
-                    0{activeIndex + 1} / 0{feedbacks.length}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Square Clickable Avatars Grid row with auto-selection & 10s progress bar */}
-            <div className="flex gap-3 pl-14">
-              {feedbacks.map((fb, idx) => (
-                <button
-                  key={fb.id}
-                  className={`relative overflow-hidden w-14 h-14 border p-0.5 cursor-pointer bg-neutral-800 transition-all duration-300 ${
-                    activeIndex === idx 
-                      ? 'border-white scale-105 shadow-md shadow-white/10' 
-                      : 'border-neutral-700 opacity-60 hover:opacity-100'
-                  }`}
-                  onClick={() => setActiveIndex(idx)}
-                >
-                  <img 
-                    src={fb.imageUrl} 
-                    alt={fb.name}
-                    className={`w-full h-full object-cover transition-all duration-300 ${
-                      activeIndex === idx ? 'grayscale-0' : 'grayscale'
-                    }`}
-                  />
-                  {activeIndex === idx && (
-                    <div className="absolute bottom-0 left-0 h-[2px] bg-white animate-timer-progress" />
-                  )}
-                </button>
-              ))}
-            </div>
-          </Reveal>
-
-        </div>
-
-        {/* Bottom Section: Details About Work as Feedback (Trial Info) */}
-        <Reveal direction="up" delay={0.4}>
-          <div className="pt-16 border-t border-neutral-800 flex flex-col gap-10">
+        {/* Top Section: Work Feedback & Reviews */}
+        <Reveal direction="up" delay={0.2}>
+          <div className="pb-16 mb-20 border-b border-neutral-800 flex flex-col gap-10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div>
                 <h4 className="font-sans font-bold text-xl text-white tracking-wide uppercase">
@@ -316,6 +208,114 @@ const Feedback = () => {
             </div>
           </div>
         </Reveal>
+
+        {/* Bottom Grid: Why Me? + Inspired by Great Minds */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          
+          {/* Left Column: Why Me? (Accordion Collapsible groups) */}
+          <Reveal direction="right" delay={0.4} className="flex flex-col gap-6">
+            <h3 className="font-sans text-xl font-medium text-neutral-400 tracking-wider">
+              WHY <span className="font-extrabold text-white">ME?</span>
+            </h3>
+            
+            <div className="w-16 h-[1px] bg-neutral-700 mt-[-8px] mb-4"></div>
+
+            <div className="flex flex-col gap-4 w-full min-h-[290px]">
+              {accordions.map((acc) => {
+                const isOpen = openAccordion === acc.id;
+                return (
+                  <div key={acc.id} className={`border transition-colors duration-300 ${isOpen ? 'border-neutral-600 bg-neutral-900/40' : 'border-neutral-800 bg-neutral-900/10 hover:border-neutral-700'}`}>
+                    {/* Accordion Trigger Header */}
+                    <button
+                      className="w-full flex justify-between items-center p-4 text-xs font-bold uppercase tracking-widest text-neutral-300 hover:text-white transition-colors duration-200 outline-none cursor-pointer"
+                      onClick={() => toggleAccordion(acc.id)}
+                    >
+                      <div className="flex items-center gap-3">
+                        {acc.icon}
+                        <span>{acc.title}</span>
+                      </div>
+                      <span className={`text-base font-medium transition-transform duration-300 leading-none ${isOpen ? 'rotate-45 text-white' : 'text-neutral-400'}`}>+</span>
+                    </button>
+                    
+                    {/* Accordion Content pane with smooth CSS grid height transition */}
+                    <div 
+                      className={`grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+                        isOpen ? 'grid-rows-[1fr] opacity-100 border-t border-neutral-800' : 'grid-rows-[0fr] opacity-0 border-t-0'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="p-4 pt-3">
+                          <p className="text-neutral-400 text-xs leading-relaxed">
+                            {acc.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </Reveal>
+
+          {/* Right Column: Inspired by Great Minds (Clean unboxed layout with fixed height) */}
+          <Reveal direction="left" delay={0.4} className="flex flex-col gap-6">
+            <h3 className="font-sans text-xl font-medium text-neutral-400 tracking-wider">
+              INSPIRED BY <span className="font-extrabold text-white">GREAT MINDS</span>
+            </h3>
+
+            <div className="w-16 h-[1px] bg-neutral-700 mt-[-8px] mb-4"></div>
+
+            {/* Testimonial area with fixed height to prevent layout shifting */}
+            <div className="h-[190px] flex flex-col justify-between w-full">
+              <div key={activeIndex} className="flex flex-col justify-between h-full w-full">
+                <div className="flex gap-4 items-start">
+                  <div className="text-neutral-500 shrink-0 pt-1">
+                    <Quote size={40} className="stroke-1" />
+                  </div>
+                  <p className="text-neutral-400 text-sm leading-relaxed italic animate-cinematic-quote">
+                    "{feedbacks[activeIndex].text}"
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-neutral-800/80 pt-4 pl-14 animate-cinematic-author">
+                  <span className="text-neutral-300 text-xs font-bold tracking-widest uppercase">
+                    {feedbacks[activeIndex].name}, <span className="font-medium text-neutral-500">{feedbacks[activeIndex].role}</span>
+                  </span>
+                  <span className="font-mono text-[10px] text-neutral-500">
+                    0{activeIndex + 1} / 0{feedbacks.length}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Square Clickable Avatars Grid row with auto-selection & 10s progress bar */}
+            <div className="flex gap-3 pl-14">
+              {feedbacks.map((fb, idx) => (
+                <button
+                  key={fb.id}
+                  className={`relative overflow-hidden w-14 h-14 border p-0.5 cursor-pointer bg-neutral-800 transition-all duration-300 ${
+                    activeIndex === idx 
+                      ? 'border-white scale-105 shadow-md shadow-white/10' 
+                      : 'border-neutral-700 opacity-60 hover:opacity-100'
+                  }`}
+                  onClick={() => setActiveIndex(idx)}
+                >
+                  <img 
+                    src={fb.imageUrl} 
+                    alt={fb.name}
+                    className={`w-full h-full object-cover transition-all duration-300 ${
+                      activeIndex === idx ? 'grayscale-0' : 'grayscale'
+                    }`}
+                  />
+                  {activeIndex === idx && (
+                    <div className="absolute bottom-0 left-0 h-[2px] bg-white animate-timer-progress" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </Reveal>
+
+        </div>
 
       </div>
     </section>
